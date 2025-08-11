@@ -1,5 +1,6 @@
 csharp_code: dict = {
     "01. Variables and Assignments": """
+```c#
 // Basic data types
 string name = "David";               // String
 bool state = true;                   // Boolean
@@ -26,8 +27,10 @@ const double pi = 3.14;              // Compile-time constant
 DateTime now = DateTime.Now;        // Runtime constant
 string lateAssignation;             // Declare now, initialize later
 lateAssignation = "assigned value";
+```
 """,
     "02. String Manipulation": """
+```c#
 string example = "hello world 12345";
 string[] words = example.Split(' ');
 
@@ -53,8 +56,10 @@ example.PadLeft(example.Length + 3, '0');  // <= Pad left
 // Splitting and joining
 example.Split(' ');                  // <= split
 string.Join("-", words);            // <= join
+```
 """,
     "03. Collections: Lists, Sets, and Maps": """
+```c#
 // Lists (ordered, allows duplicates)
 List<object> mixedList = new List<object> { 1, "Juan", 23, "Juan" };
 List<int> numbers = new List<int> { 1, 2, 23, 4 };
@@ -101,8 +106,10 @@ person.Remove("Name");               // <= Remove
 person["Name"] = "Luis";             // <= Update
 person.ContainsKey("Name");          // <= Contains keyName? true or false
 person.ContainsValue("Luis");        // <= Contains valueName? true or false
+```
 """,
     "04. Key Concepts": """
+```c#
 // one line assignments
 List<int> doubled = Enumerable.Range(0, 5).Select(index => index * 2).ToList(); // <= List generation
 doubled.ForEach(num => Console.WriteLine($"Number: {num}"));                   // <= ForEach with arrow function
@@ -118,8 +125,10 @@ string notNullVar = nullableVar != null ? nullableVar : "default"; // conditiona
 // Boolean inversion
 bool isTrue = true;
 isTrue = !isTrue;                                      // if it's true return false
+```
 """,
     "05. Parsing and Type Conversion": """
+```c#
 // Parsing
 int exampleInt = int.Parse("12");                      // <= String to int
 double exampleDouble = double.Parse("12.5");           // <= String to double
@@ -158,8 +167,10 @@ Dictionary<int, string> fruitsMap = new Dictionary<int, string> {
 string stringFromMap = string.Join(",", fruitsMap.Values); // <= Map to String
 List<string> listFromMap = fruitsMap.Values.ToList();      // <= Map to List
 HashSet<string> setFromMap = new HashSet<string>(fruitsMap.Values); // <= Map to Set
+```
 """,
     "06. Conditionals": """
+```c#
 int condition1 = 10;
 int condition2 = 5;
 
@@ -192,8 +203,10 @@ switch (value) {
     Console.WriteLine("Default case executed");
     break;
 }
+```
 """,
     "07. Loops and Repetition": """
+```c#
 // For loop
 for (int i = 0; i < 5; i++) {
   if (i == 3) continue;
@@ -229,8 +242,10 @@ do {
   Console.WriteLine($"Do-while loop: {count}");
   count--;
 } while (count > 0);
+```
 """,
     "08. Functions and Methods": """
+```c#
 // One-line expression
 void CallFunction(string parameter) => Console.WriteLine($"hello {parameter}");
 
@@ -269,8 +284,10 @@ Console.WriteLine(sum(2, 3)); // returns: 5
 
 // Pass as argument
 int TotalSum = Add(2, Add(2, 3)); // returns: 7
+```
 """,
     "09. Error Handling": """
+```c#
 try {
   // Potentially error-prone code
   double result = double.Parse("123") / 0;
@@ -288,6 +305,7 @@ catch (Exception e) {
 finally {
   Console.WriteLine("This always executes");
 }
+```
 """,
 }
 
@@ -295,7 +313,7 @@ csharp_class: dict = {
     "01. Basic Classes": """
 In C#, classes are defined using the keyword class and follow PascalCase naming. They group data and behavior into reusable objects.
 
-`csharp
+```csharp
 class Vehicle {
   public string Brand;
   public int Year;
@@ -310,12 +328,12 @@ var myCar = new Vehicle {
   Year = 2020
 };
 myCar.ShowInfo(); // Brand: Toyota, Year: 2020
-`
+```
 """,
     "02. Properties and Methods": """
 Use properties (get and set) to manage access. readonly members can only be set once.
 
-`csharp
+```csharp
 class User {
   public string Id { get; }
   public string Name { get; set; }
@@ -332,9 +350,10 @@ class User {
 
 var u = new User("u123", "Ana");
 u.Greet(); // Hello, Ana! (ID: u123)
-`
+```
 """,
     "03. Constructors": """
+```csharp
 // Basic constructor
 class Point {
   public double X, Y;
@@ -380,8 +399,10 @@ class Logger {
     return _cache[name];
   }
 }
+```csharp
 """,
     "04. Inheritance": """
+```csharp
 Inheritance is achieved using : and virtual/override for behavior customization.
 
 `csharp
@@ -395,9 +416,11 @@ class Dog : Animal {
 
 Animal a = new Dog();
 a.Move(); // The dog runs
-`
+```
+
 """,
     "05. Polymorphism": """
+```csharp
 Polymorphism enables flexible APIs via interfaces.
 
 `csharp
@@ -410,12 +433,13 @@ class Circle : IShape {
   public Circle(double radius) => Radius = radius;
   public double Area() => Math.PI  Radius  Radius;
 }
-`
+```csharp
 """,
     "06. Mixins": """
 C# uses composition + interfaces to simulate mixins.
 
-`csharp
+```csharp
+
 interface IMusical {
   void PlayInstrument();
 }
@@ -428,12 +452,13 @@ class Musician {
   private IMusical _musical = new MusicalTrait();
   public void Perform() => _musical.PlayInstrument();
 }
-`
+```
 """,
     "07. Interfaces": """
 Interfaces define contracts. Implementing classes must fulfill them.
 
-`csharp
+```csharp
+
 interface IPerson {
   string Greet();
 }
@@ -441,12 +466,13 @@ interface IPerson {
 class Impostor : IPerson {
   public string Greet() => "I am an impostor!";
 }
-`
+```
 """,
     "08. Abstract Classes": """
 Abstract classes define shared structure and force overrides.
 
-`csharp
+```csharp
+
 abstract class Vehicle {
   public abstract void Move();
 }
@@ -454,23 +480,23 @@ abstract class Vehicle {
 class Bicycle : Vehicle {
   public override void Move() => Console.WriteLine("The bicycle moves");
 }
-`
+```
 """,
     "09. Encapsulation and Access": """
 Use access modifiers to protect internal state.
 
-`csharp
+```csharp
 class Bank {
   private double _balance = 0;
   public void Deposit(double amount) => _balance += amount;
   public double Balance => _balance;
 }
-`
+```
 """,
     "10. Static Members and Constants": """
 Static members belong to the class rather than the instance.
 
-`csharp
+```csharp
 class Utils {
   public const double Pi = 3.1416;
   public static double Square(double x) => x * x;
@@ -478,12 +504,12 @@ class Utils {
 
 Console.WriteLine(Utils.Pi);      // 3.1416
 Console.WriteLine(Utils.Square(5)); // 25
-`
+```
 """,
     "11. Generics in Classes": """
 Generics allow reusable, type-safe containers.
 
-`csharp
+```csharp
 class Box<T> {
   public T Content;
   public Box(T content) => Content = content;
@@ -494,9 +520,10 @@ var boxStr = new Box<string>("Hello");
 
 Console.WriteLine(boxInt.Content); // 42
 Console.WriteLine(boxStr.Content); // Hello
-`
+```
 """,
     "Annotations and Extras": """
+```csharp
 // Metadata annotations
 [Obsolete("Use NewMethod instead")]
 void OldMethod() {}
@@ -515,6 +542,7 @@ void OldMethod() {}
 /// a and b: operands
 /// Returns: sum
 int Add(int a, int b) => a + b;
+```
 """,
 }
 
@@ -522,7 +550,8 @@ csharp_os: dict = {
     "01. Path and File Management": """
 Use System.IO to interact with paths and files.
 
-`csharp
+```csharp
+
 using System.IO;
 
 // Get current directory
@@ -536,46 +565,50 @@ File.WriteAllText(path, "Hello world");
 
 // Read from file
 string content = File.ReadAllText(path);
-`
+```
 """,
     "02. Environment Variables": """
 Access system-wide environment info via Environment.
 
-`csharp
+```csharp
+
 string os: dict = Environment.OSVersion.ToString();
 string user = Environment.UserName;
 string tempPath = Path.GetEnvironmentVariable("TEMP");
-`
+```
 """,
     "03. Process Execution": """
 Run external programs with Process.
 
-`csharp
+```csharp
+
 using System.Diagnostics;
 
 ProcessStartInfo psi = new ProcessStartInfo("notepad.exe");
 Process.Start(psi);
-`
+```
 """,
     "04. Async File IO": """
 Use async versions for non-blocking operations.
 
-`csharp
+```csharp
+
 using System.IO;
 using System.Threading.Tasks;
 
 async Task SaveFileAsync(string path, string data) {
   await File.WriteAllTextAsync(path, data);
 }
-`
+```
 """,
     "05. Directory Traversal": """
 Explore folders and files.
 
-`csharp
+```csharp
+
 string[] files = Directory.GetFiles("docs");
 string[] folders = Directory.GetDirectories("docs");
-`
+```
 """,
     "06. Temporary Files": """
 C# provides APIs for temp files via Path and File.
@@ -588,10 +621,11 @@ File.WriteAllText(temp, "Temp data");
     "07. OS Detection": """
 Use Environment to detect OS family.
 
-`csharp
+```csharp
+
 bool isWindows = Environment.OSVersion.Platform == PlatformID.Win32NT;
 bool isUnix = Environment.OSVersion.Platform == PlatformID.Unix;
-`
+```
 """,
     "08. Permissions & Access Control": """
 Use file attributes and exceptions to check access.
@@ -604,32 +638,36 @@ bool isWritable = File.Exists("file.txt") &&
     "09. File Metadata": """
 Access creation/modification dates and sizes.
 
-`csharp
+```csharp
+
 DateTime created = File.GetCreationTime("file.txt");
 DateTime modified = File.GetLastWriteTime("file.txt");
 long size = new FileInfo("file.txt").Length;
-`
+```
 """,
     "10. Symbolic Links": """
 Requires .NET 6+ with platform-specific flags.
 
-`csharp
+```csharp
+
 Directory.CreateSymbolicLink("link", "target");
-`
+```
 Windows requires admin rights. Use with care.
 """,
     "11. Serialization (JSON)": """
 Use System.Text.Json for JSON files.
 
-`csharp
+```csharp
+
 using System.Text.Json;
 
 var person = new { Name = "Ana", Age = 30 };
 string json = JsonSerializer.Serialize(person);
 File.WriteAllText("person.json", json);
-`
+```
 """,
     "Annotations and Extras": """
+```csharp
 // Use using System.IO for most I/O
 // Prefer async methods for responsiveness
 // Use Path.Combine() to avoid platform-specific issues
@@ -641,5 +679,6 @@ File.WriteAllText("person.json", json);
 /// Returns: file content as string
 string LoadConfig(string path) =>
   File.Exists(path) ? File.ReadAllText(path) : "";
+```
 """,
 }

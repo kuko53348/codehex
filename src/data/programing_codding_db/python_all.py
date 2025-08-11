@@ -1,5 +1,6 @@
 python_code: dict = {
     "01. Variables and Assignments": """
+```python
 # Python uses dynamic typing for variable assignment
 name = "David"         # String
 state = True           # Boolean
@@ -14,8 +15,10 @@ person = {"Name": "Carlos", "Age": 23}   # Dictionary (key-value)
 # Constants by naming convention
 PI = 3.14
 now = datetime.now()   # Runtime constant (current timestamp)
+```
 """,
     "02. String Manipulation": """
+```python
 example = "hello world 12345"
 words = example.split(" ")           # Split into list of words
 
@@ -36,8 +39,10 @@ example.ljust(len(example)+3, "0")   # Pad left with zeros
 
 # Rejoin after splitting
 " ".join(words)
+```
 """,
     "03. Collections: Lists, Sets, and Dicts": """
+```python
 # Lists (ordered, allow duplicates)
 numbers = [1, 2, 23, 4]
 names = ["Pedro", "Juan", "Cesar", "Carlos"]
@@ -64,18 +69,20 @@ person.pop("Name")                  # Remove key
 person["Name"] = "Luis"             # Update value
 "Name" in person                    # Check key
 "Luis" in person.values()           # Check value
+```
 """,
     "04. Key Concepts": """
+```python
 # List comprehension to double values
 doubled = [i * 2 for i in range(5)]
 
 # Loop through list
 for num in doubled:
-  print(f"Number: {num}")
+    print(f"Number: {num}")
 
 # Ternary function
 def greet(is_morning):
-  return "Good Morning" if is_morning else "Hello"
+    return "Good Morning" if is_morning else "Hello"
 
 # Lambda function assigned to variable
 button_click = lambda: print("Clicked Bro")
@@ -87,8 +94,10 @@ not_nullable = "value" if nullable else "fallback"   # Fallback if null
 # Boolean inversion
 is_true = True
 is_true = not is_true
+```
 """,
     "05. Parsing and Type Conversion": """
+```python
 # String to numeric
 int_val = int("12")
 float_val = float("12.5")
@@ -120,61 +129,68 @@ fruits_dict = {0: "apple", 1: "banana"}
 string_from_dict = ",".join(fruits_dict.values())
 list_from_dict = list(fruits_dict.values())
 set_from_dict = set(fruits_dict.values())
+```
 """,
     "06. Conditionals": """
+```python
 # Conditional assignment
 result = "True case" if True else "False case"
 
 # If-else block
 if condition1 == 10:
-  print("Condition1 is true")
+    print("Condition1 is true")
 elif condition2 == 5:
-  print("Condition2 is true")
+    print("Condition2 is true")
 else:
-  print("All conditions are false")
+    print("All conditions are false")
 
 # Match-case (Python 3.10+)
 value = "case2"
 match value:
-  case "case1":
-    print("Case 1 executed")
-  case "case2":
-    print("Case 2 executed")
-  case _:
-    print("Default case executed")
+    case "case1":
+        print("Case 1 executed")
+    case "case2":
+        print("Case 2 executed")
+    case _:
+        print("Default case executed")
+```
 """,
     "07. Loops and Repetition": """
+```python
 # For loop with continue and break
 for i in range(5):
-  if i == 3: continue
-  print(f"For loop: {i}")
-  if i == 4: break
+    if i == 3: continue
+    print(f"For loop: {i}")
+    if i == 4: break
 
 # For-in loop over list
 names = ["Maria", "Joaquin", "Luisa"]
 for name in names:
-  print(f"Hello {name}")
+    print(f"Hello {name}")
 
 # For-in loop over dict
 ages = {"Maria": 20, "Joaquin": 21, "Luisa": 22}
 for name, age in ages.items():
-  print(f"{name} is {age} years old")
+    print(f"{name} is {age} years old")
 
 # While loop
 count = 0
 while count < 3:
-  print(f"While loop: {count}")
-  count += 1
+    print(f"While loop: {count}")
+    count += 1
 
 # Do-while emulation
 count = 3
 while True:
-  print(f"Do-while loop: {count}")
-  count -= 1
-  if count == 0:
+    print(f"Do-while loop: {count}")
+    count -= 1
+    if count == 0:
     break
+
+```
 """,
     "08. Functions and Methods": """
+```python
 # Define and call a function
 def greet(parameter): print(f"hello {parameter}")
 greet_lambda = lambda parameter: print(f"hello {parameter}")
@@ -188,24 +204,28 @@ def return_tuple(parameter): return (123, parameter)
 def add(a, b): return a + b
 sum_result = add(2, 3)
 total_sum = add(2, add(2, 3))
+```
 """,
     "09. Error Handling": """
+```python
 # Exception handling with fallback
 try:
-  result = int("123") / 0
+    result = int("123") / 0
 except ZeroDivisionError:
-  print("Cannot divide by zero")
+    print("Cannot divide by zero")
 except ValueError:
-  print("Invalid number format")
+    print("Invalid number format")
 except Exception as e:
-  print(f"An error occurred: {e}")
+    print(f"An error occurred: {e}")
 finally:
-  print("This always executes")
+    print("This always executes")
+```
 """,
 }
 
 python_class: dict = {
     "01. Basic Classes": """
+```python
 # Define a class with properties and a method
 class Vehicle:
     def __init__(self):
@@ -220,8 +240,10 @@ my_car = Vehicle()
 my_car.brand = "Toyota"
 my_car.year = 2020
 my_car.show_info()      # Brand: Toyota, Year: 2020
+```
 """,
     "02. Properties and Methods": """
+```python
 class User:
     def __init__(self, user_id, name):
         self._id = user_id    # underscore implies internal use
@@ -233,8 +255,10 @@ class User:
 # Create instance
 u = User("u123", "Ana")
 u.greet()                 # Hello, Ana! (ID: u123)
+```
 """,
     "03. Constructors": """
+```python
 # Python uses __init__ for constructors
 class Point:
     def __init__(self, x=0, y=0):
@@ -243,8 +267,10 @@ class Point:
 
 p1 = Point(2, 3)
 p2 = Point()              # Uses default origin
+```
 """,
     "04. Inheritance": """
+```python
 # Child class inherits from Parent class
 class Animal:
     def move(self):
@@ -256,8 +282,10 @@ class Dog(Animal):
 
 a = Dog()
 a.move()                  # The dog runs
+```
 """,
     "05. Polymorphism": """
+```python
 # Define a shared interface
 class Shape:
     def area(self):
@@ -269,8 +297,10 @@ class Circle(Shape):
 
     def area(self):
         return 3.1416 * self.radius ** 2
+```
 """,
     "06. Mixins": """
+```python
 class Musical:
     def play_instrument(self):
         print("Playing instrument")
@@ -280,9 +310,11 @@ class Musician(Musical):
 
 m = Musician()
 m.play_instrument()
+```
 """,
     "07. Interfaces": """
 # Python uses abstract base classes for interfaces
+```python
 from abc import ABC, abstractmethod
 
 class Person(ABC):
@@ -295,8 +327,10 @@ class Impostor(Person):
 
 i = Impostor()
 i.greet()
+```
 """,
     "08. Abstract Classes": """
+```python
 from abc import ABC, abstractmethod
 
 class Vehicle(ABC):
@@ -306,8 +340,10 @@ class Vehicle(ABC):
 class Bike(Vehicle):
     def move(self):
         print("The bike moves forward")
+```
 """,
     "09. Encapsulation": """
+```python
 class Bank:
     def __init__(self):
         self._balance = 0     # private by convention
@@ -317,8 +353,10 @@ class Bank:
 
     def get_balance(self):
         return self._balance
+```
 """,
     "10. Static Members and Constants": """
+```python
 class Utilities:
     PI = 3.1416                          # constant
     @staticmethod
@@ -327,8 +365,10 @@ class Utilities:
 
 print(Utilities.PI)
 print(Utilities.square(5))
+```
 """,
     "11. Generics with Typing": """
+```python
 from typing import Generic, TypeVar
 T = TypeVar("T")
 
@@ -341,8 +381,10 @@ box_str = Box("Hello")
 
 print(box_int.content)      # 42
 print(box_str.content)      # Hello
+```
 """,
     "12. Docstrings and Metadata": '''
+```python
 class Calculator:
     """Performs arithmetic operations."""
 
@@ -353,9 +395,11 @@ class Calculator:
 # Access docstrings
 print(Calculator.__doc__)
 print(Calculator.add.__doc__)
+```
 ''',
     "13. Design Patterns": """
 # Singleton via module-level instance
+```python
 class Logger:
     _instance = None
 
@@ -369,18 +413,22 @@ log1 = Logger("main")
 log2 = Logger("backup")
 print(log1.name)           # main
 print(log2.name)           # main (shared)
+```
 """,
     "14. Best Practices": """
+```python
 # ✅ Use descriptive class and method names
 # ✅ Favor composition over inheritance
 # ✅ Use properties for clean getters/setters
 # ✅ Group related behaviors in methods
 # ✅ Write docstrings for public APIs
+```
 """,
 }
 
 python_os: dict = {
     "01. Files and Directories": """
+```python
 import os
 
 # 📖 Read file content
@@ -402,8 +450,10 @@ current_dir = os.getcwd()
 
 # 🗂️ List directory contents
 dir_contents = os.listdir(current_dir)
+```
 """,
     "02. Paths and Manipulation": """
+```python
 import os
 
 # 📎 File name
@@ -417,8 +467,10 @@ full_path = os.path.abspath("data.txt")
 
 # 🔗 Join paths
 joined = os.path.join("folder", "file.txt")
+```
 """,
     "03. Date and Time": """
+```python
 from datetime import datetime
 
 # ⏰ Current date and time
@@ -435,8 +487,10 @@ diff = now - parsed
 
 # 🧾 Simple format
 formatted = f"{now.day}/{now.month}/{now.year}"
+```
 """,
     "04. System Processes": """
+```python
 import subprocess
 
 # 🖥️ Run shell command
@@ -453,8 +507,10 @@ env_vars = os.environ
 
 # 🏡 HOME directory (Unix)
 home_dir = env_vars.get("HOME")
+```
 """,
     "06. Operating System Detection": """
+```python
 import platform
 import sys
 
@@ -466,8 +522,10 @@ is_linux = sys.platform.startswith("linux")
 
 # 🍎 macOS
 is_mac = sys.platform.startswith("darwin")
+```
 """,
     "07. Continuous Reading / Streams": """
+```python
 import subprocess
 
 # 🔁 Start real-time process
@@ -476,5 +534,6 @@ process = subprocess.Popen(["ping", "localhost"], stdout=subprocess.PIPE, text=T
 # 🖥️ Stream and display output
 for line in process.stdout:
     print(f"📡 {line.strip()}")
+```
 """,
 }

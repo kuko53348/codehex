@@ -1,6 +1,11 @@
 import flet as ft
 
 from data.main_model_codding_db import dict_object_seralization
+from model.ModelPageView import ModelPageView
+from pages.page_one_menu import PageOneMenu
+from pages.main_menu import MainMenu
+from pages.markdown_page_view import MarkDownPageView
+from pages.page_two_menu import PageTwoMenu
 
 
 class page_app_view(ft.View):
@@ -51,7 +56,9 @@ class flet_box_app:
             route="/",
         )
 
-        self.page.go("/")
+        # self.page.go("/")
+        self.page.go("/home")
+        # self.page.go("/index_layer_two")
 
     def on_route_change(self, page: object = None, route: str = str()) -> None:
         self.page = page
@@ -60,30 +67,78 @@ class flet_box_app:
 
         if self.page.route == "/":
             self.page.views.append(
-                # page_app_view(
-                #     page=self.page,
-                #     route=self.route,
-                #     content=ft.ElevatedButton(
-                #         text="next",
-                #         on_click=lambda _: self.page.go("/home"),
-                #     ),
-                # )
-                ft.Container(
-                    width=320,
-                    height=320,
-                    content=ft.Text(value=dict_object_seralization()["cpp"].code),
+                page_app_view(
+                    page=self.page,
+                    route=self.route,
+                    content=ft.ElevatedButton(
+                        text="next",
+                        on_click=lambda _: self.page.go("/home"),
+                    ),
+                    # content=ft.Text(value=dict_object_seralization()["cpp"].code),
                 )
             )
-        if self.page.route == "/home":
+
+        elif self.page.route == "/home":
+            # first code index
             self.page.views.append(
-                # page_app_view(
-                #     page=self.page,
-                #     route=self.route,
-                #     content=ft.ElevatedButton(
-                #         text="Home",
-                #         on_click=lambda _: self.page.go("/"),
-                #     ),
-                # )
+                page_app_view(
+                    page=self.page,
+                    route=self.route,
+                    content=MainMenu(
+                        page=self.page,
+                        menu_list=dict_object_seralization(),
+                        go_to="/index_layer_one",
+                    ),
+                    # content=ft.Text(value=dict_object_seralization()["cpp"].code),
+                )
+            )
+        elif self.page.route == "/index_layer_one":
+            header = self.page.session.get("layer_one_selected")
+            self.page.views.append(
+                ModelPageView(
+                    page=self.page,
+                    title_page="layer two",
+                    back_click=lambda widget: self.page.go("/home"),
+                    content=PageOneMenu(
+                        page=self.page,
+                        header=header,
+                        menu_list=dict_object_seralization()[header].__dict__,
+                        go_to="/index_layer_two",
+                    ),
+                )
+            )
+        elif self.page.route == "/index_layer_two":
+            header = self.page.session.get("layer_one_selected")
+            layer_two_selected = self.page.session.get("layer_two_selected")
+            code = dict_object_seralization()[header].__dict__[layer_two_selected]
+
+            self.page.views.append(
+                ModelPageView(
+                    page=self.page,
+                    title_page="layer three",
+                    back_click=lambda widget: self.page.go("/index_layer_one"),
+                    content=PageTwoMenu(
+                        page=self.page,
+                        header=layer_two_selected,
+                        menu_list=code,
+                        go_to="/markdown",
+                    ),
+                )
+            )
+
+        elif self.page.route == "/markdown":
+            header = self.page.session.get("layer_one_selected")
+            layer_two_selected = self.page.session.get("layer_two_selected")
+            layer_three_selected = self.page.session.get("layer_three_selected")
+            code = dict_object_seralization()[header].__dict__[layer_two_selected][
+                layer_three_selected
+            ]
+
+            self.page.views.append(
+                MarkDownPageView(
+                    page=self.page,
+                    md_code=code,
+                )
             )
 
         self.page.update()

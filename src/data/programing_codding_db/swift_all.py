@@ -1,5 +1,6 @@
 swift_code: dict = {
     "01. Variables and Assignments": """
+```swift
 // Immutable vs Mutable
 let name = "David"           // Constant (String)
 var state = true             // Variable (Bool)
@@ -16,8 +17,10 @@ var person: [String: Any] = ["Name": "Carlos", "Age": 23]
 let now = Date()             // Runtime constant
 var lateValue: String!       // Implicitly unwrapped optional
 lateValue = "Assigned later"
+```
 """,
     "02. String Manipulation": """
+```swift
 let example = "hello world 12345"
 let words = example.split(separator: " ")     // Returns [Substring]
 
@@ -39,8 +42,10 @@ example + String(repeating: "0", count: 3)     // Pad right
 
 // Splitting and joining
 let joined = words.joined(separator: "-")
+```
 """,
     "03. Collections: Arrays, Sets, Dictionaries": """
+```swift
 var numbers = [1, 2, 23, 4]
 var names = ["Pedro", "Juan", "Cesar", "Carlos"]
 
@@ -66,8 +71,10 @@ person.removeValue(forKey: "Name")
 person["Name"] = "Luis"
 person.keys.contains("Name")
 person.values.contains(where: { ($0 as? String) == "Luis" })
+```
 """,
     "04. Key Concepts": """
+```swift
 let doubled = (0..<5).map { $0 * 2 }
 doubled.forEach { print("Number: \\($0)") }
 
@@ -83,8 +90,10 @@ let notNull = nullable ?? "Fallback"
 
 var isTrue = true
 isTrue.toggle()
+```
 """,
     "05. Parsing and Type Conversion": """
+```swift
 let intVal = Int("12")
 let doubleVal = Double("12.5")
 let strInt = String(12)
@@ -99,8 +108,10 @@ let fruitsList = ["apple", "banana", "orange"]
 let stringFromList = fruitsList.joined(separator: ",")
 let setFromList = Set(fruitsList)
 let mapFromList = Dictionary(uniqueKeysWithValues: fruitsList.enumerated().map { ($0.offset, $0.element) })
+```
 """,
     "06. Conditionals": """
+```swift
 let condition1 = 10
 let condition2 = 5
 
@@ -123,8 +134,10 @@ case "case2":
 default:
   print("Default case executed")
 }
+```
 """,
     "07. Loops and Repetition": """
+```swift
 for i in 0..<5 {
   if i == 3 { continue }
   print("For loop: \\(i)")
@@ -151,8 +164,10 @@ repeat {
   print("Do-while loop: \\(count)")
   count -= 1
 } while count > 0
+```
 """,
     "08. Functions and Closures": """
+```swift
 func greet(param: String) {
   print("hello \\(param)")
 }
@@ -179,8 +194,10 @@ func add(_ a: Int, _ b: Int) -> Int {
 
 let sumResult = add(2, 3)
 let totalSum = add(2, add(2, 3))
+```
 """,
     "09. Error Handling": """
+```swift
 enum DivisionError: Error {
   case divideByZero
 }
@@ -200,11 +217,13 @@ do {
 } finally {
   print("This always executes")
 }
+```
 """,
 }
 
 swift_class: dict = {
     "01. Basic Classes": """
+```swift
 class Vehicle {
   var brand: String = ""
   var year: Int = 0
@@ -218,8 +237,10 @@ let myCar = Vehicle()
 myCar.brand = "Toyota"
 myCar.year = 2020
 myCar.showInfo() // Brand: Toyota, Year: 2020
+```
 """,
     "02. Properties and Methods": """
+```swift
 class User {
   let id: String        // Immutable
   var name: String      // Mutable
@@ -236,8 +257,10 @@ class User {
 
 let u = User(id: "u123", name: "Ana")
 u.greet() // Hello, Ana! (ID: u123)
+```
 """,
     "03. Constructors (Initializers)": """
+```swift
 struct Point {
   var x: Double
   var y: Double
@@ -250,8 +273,10 @@ struct Point {
 
 let p1 = Point(x: 2, y: 3)
 let p2 = Point() // Defaults to origin (0,0)
+```
 """,
     "04. Inheritance": """
+```swift
 class Animal {
   func move() {
     print("The animal moves")
@@ -266,8 +291,10 @@ class Dog: Animal {
 
 let a: Animal = Dog()
 a.move() // The dog runs
+```
 """,
     "05. Polymorphism": """
+```swift
 protocol Shape {
   func area() -> Double
 }
@@ -280,8 +307,10 @@ class Circle: Shape {
     return 3.1416 * radius * radius
   }
 }
+```
 """,
     "06. Mixins via Protocol Extensions": """
+```swift
 protocol Musical {
   func playInstrument()
 }
@@ -296,8 +325,10 @@ class Musician: Musical {}
 
 let m = Musician()
 m.playInstrument() // Playing instrument
+```
 """,
     "07. Protocols as Interfaces": """
+```swift
 protocol Person {
   func greet() -> String
 }
@@ -310,8 +341,10 @@ class Impostor: Person {
 
 let i = Impostor()
 print(i.greet())
+```
 """,
     "08. Abstract Behavior via Protocols": """
+```swift
 protocol Vehicle {
   func move()
 }
@@ -324,8 +357,10 @@ class Bike: Vehicle {
 
 let b = Bike()
 b.move()
+```
 """,
     "09. Encapsulation and Access": """
+```swift
 class Bank {
   private var balance: Double = 0
 
@@ -341,8 +376,10 @@ class Bank {
 let myBank = Bank()
 myBank.deposit(100)
 print(myBank.getBalance()) // 100.0
+```
 """,
     "10. Static Members and Constants": """
+```swift
 class Utilities {
   static let pi = 3.1416
 
@@ -353,8 +390,10 @@ class Utilities {
 
 print(Utilities.pi)              // 3.1416
 print(Utilities.square(5))       // 25.0
+```
 """,
     "11. Generics in Classes": """
+```swift
 class Box<T> {
   var content: T
   init(content: T) {
@@ -367,8 +406,10 @@ let boxStr = Box(content: "Hello")
 
 print(boxInt.content) // 42
 print(boxStr.content) // Hello
+```
 """,
     "12. Documentation Comments": """
+```swift
 /// A calculator that performs arithmetic
 class Calculator {
   /// Adds two integers
@@ -392,6 +433,7 @@ let log2 = Logger.shared
 
 print(log1.name) // Main
 print(log2.name) // Main (shared instance)
+```
 """,
     "14. Best Practices": """
 // ✅ Use PascalCase for class and protocol names
@@ -404,6 +446,7 @@ print(log2.name) // Main (shared instance)
 
 swift_os: dict = {
     "01. Files and Directories": """
+```swift
 import Foundation
 
 // 📖 Read file content
@@ -438,8 +481,10 @@ let fullPath = URL(fileURLWithPath: "data.txt").absoluteURL
 
 // 🔗 Join paths
 let joined = URL(fileURLWithPath: "folder").appendingPathComponent("file.txt")
+```
 """,
     "03. Date and Time": """
+```swift
 import Foundation
 
 // ⏰ Current date
@@ -459,8 +504,10 @@ let diff = now.timeIntervalSince(parsed ?? Date())
 // 🧾 Simple format
 formatter.dateFormat = "dd/MM/yyyy"
 let formatted = formatter.string(from: now)
+```
 """,
     "04. System Processes": """
+```swift
 import Foundation
 
 // 🖥️ Run shell command
@@ -477,8 +524,10 @@ task.waitUntilExit()
 let data = pipe.fileHandleForReading.readDataToEndOfFile()
 let output = String(data: data, encoding: .utf8)
 print(output ?? "")
+```
 """,
     "05. Environment Variables": """
+```swift
 import Foundation
 
 // 🌍 All environment variables
@@ -486,17 +535,21 @@ let env = ProcessInfo.processInfo.environment
 
 // 🏡 HOME directory (Unix)
 let home = env["HOME"]
+```
 """,
     "06. Operating System Detection": """
-#if os(macOS)
-print("🍎 This is macOS")
-#elseif os(Linux)
-print("🐧 This is Linux")
-#elseif os(Windows)
-print("🪟 This is Windows")
-#endif
+```swift
+if os(macOS)
+  print("🍎 This is macOS")
+elseif os(Linux)
+  print("🐧 This is Linux")
+elseif os(Windows)
+  print("🪟 This is Windows")
+endif
+```
 """,
     "07. Continuous Reading / Streams": """
+```swift
 import Foundation
 
 // 🔁 Start real-time process
@@ -514,5 +567,6 @@ pipe.fileHandleForReading.readabilityHandler = { handle in
     print("📡 \\(line)")
   }
 }
+```
 """,
 }

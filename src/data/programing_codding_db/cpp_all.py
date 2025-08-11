@@ -1,5 +1,6 @@
 cpp_code: dict = {
     "01. Variables and Assignments": """
+```cpp
 #include <iostream>
 #include <string>
 #include <vector>
@@ -20,8 +21,10 @@ std::map<std::string, std::string> person = {{"Name", "Carlos"}, {"Age", "23"}};
 const double PI = 3.1415;
 std::string lateAssignation;
 lateAssignation = "assigned value";
+```
 """,
     "02. String Manipulation": """
+```cpp
 #include <algorithm>
 
 std::string example = "hello world 12345";
@@ -41,8 +44,10 @@ std::replace(example.begin(), example.end(), 'h', 'H');
 // Padding (manual using string methods)
 std::string padRight = example + std::string(3, '0');
 std::string padLeft = std::string(3, '0') + example;
+```
 """,
     "03. Collections: Vectors, Sets, Maps": """
+```cpp
 std::vector<int> numbers = {1,2,23,4};
 std::vector<std::string> names = {"Pedro","Juan","Cesar","Carlos"};
 
@@ -68,8 +73,10 @@ person.erase("Name");
 bool hasKey = person.find("Name") != person.end();
 bool hasValue = std::any_of(person.begin(), person.end(),
   [](const auto& kv){ return kv.second == "Luis"; });
+```
 """,
     "04. Key Concepts": """
+```cpp
 std::vector<int> doubled;
 for (int i = 0; i < 5; ++i) doubled.push_back(i * 2);
 for (int num : doubled) std::cout << "Number: " << num << "\\n";
@@ -80,8 +87,10 @@ std::string greet(bool isMorning) {
 
 bool isTrue = true;
 isTrue = !isTrue;
+```
 """,
     "05. Parsing and Type Conversion": """
+```cpp
 std::string sInt = "12";
 std::string sFloat = "12.5";
 int intVal = std::stoi(sInt);
@@ -90,8 +99,10 @@ std::string fromInt = std::to_string(12);
 std::string fromFloat = std::to_string(12.5f);
 
 // String splitting requires custom function (use stringstream)
+```
 """,
     "06. Conditionals": """
+```cpp
 int condition1 = 10;
 int condition2 = 5;
 
@@ -109,8 +120,10 @@ std::string value = "case2";
 if (value == "case1") std::cout << "Case 1 executed\\n";
 else if (value == "case2") std::cout << "Case 2 executed\\n";
 else std::cout << "Default case executed\\n";
+```
 """,
     "07. Loops and Repetition": """
+```cpp
 for (int i = 0; i < 5; ++i) {
   if (i == 3) continue;
   std::cout << "For loop: " << i << "\\n";
@@ -138,8 +151,10 @@ do {
   std::cout << "Do-while loop: " << count << "\\n";
   --count;
 } while (count > 0);
+```
 """,
     "08. Functions and Methods": """
+```cpp
 void greet(std::string param) {
   std::cout << "Hello " << param << "\\n";
 }
@@ -160,8 +175,10 @@ int add(int a, int b) { return a + b; }
 
 int sumResult = add(2, 3);
 int totalSum = add(2, add(2, 3));
+```
 """,
     "09. Error Handling": """
+```cpp
 try {
   int result = std::stoi("123") / 0;
   std::cout << result << "\\n";
@@ -169,11 +186,13 @@ try {
   std::cout << "An error occurred: " << e.what() << "\\n";
 }
 std::cout << "This always executes\\n";
+```
 """,
 }
 
 cpp_class: dict = {
     "01. Basic Class and Instantiation": """
+```cpp
 #include <iostream>
 #include <string>
 
@@ -191,8 +210,10 @@ Vehicle myCar;
 myCar.brand = "Toyota";
 myCar.year = 2020;
 myCar.showInfo(); // Brand: Toyota, Year: 2020
+```
 """,
     "02. Properties and Methods": """
+```cpp
 class User {
 private:
   std::string id;
@@ -210,8 +231,10 @@ public:
 
 User u("u123", "Ana");
 u.greet(); // Hello, Ana! (ID: u123)
+```
 """,
     "03. Constructors": """
+```cpp
 class Point {
 public:
   double x, y;
@@ -222,8 +245,10 @@ public:
 
 Point p1(2, 3);
 Point p2; // Default origin (0,0)
+```
 """,
     "04. Inheritance": """
+```cpp
 class Animal {
 public:
   virtual void move() {
@@ -240,8 +265,10 @@ public:
 
 Animal* a = new Dog();
 a->move(); // The dog runs
+```
 """,
     "05. Polymorphism": """
+```cpp
 class Shape {
 public:
   virtual double area() const = 0; // Pure virtual
@@ -256,8 +283,10 @@ public:
     return 3.1416 * radius * radius;
   }
 };
+```
 """,
     "06. Mixins via Multiple Inheritance": """
+```cpp
 class Musical {
 public:
   void playInstrument() {
@@ -269,8 +298,10 @@ class Musician : public Musical {};
 
 Musician m;
 m.playInstrument(); // Playing instrument
+```
 """,
     "07. Interface via Abstract Class": """
+```cpp
 class Person {
 public:
   virtual std::string greet() const = 0;
@@ -285,8 +316,10 @@ public:
 
 Impostor i;
 std::cout << i.greet() << std::endl;
+```
 """,
     "08. Abstract Class Usage": """
+```cpp
 class Vehicle {
 public:
   virtual void move() const = 0;
@@ -301,8 +334,10 @@ public:
 
 Bike b;
 b.move();
+```
 """,
     "09. Encapsulation": """
+```cpp
 class Bank {
 private:
   double balance = 0;
@@ -320,8 +355,10 @@ public:
 Bank myBank;
 myBank.deposit(100.0);
 std::cout << myBank.getBalance() << std::endl;
+```
 """,
     "10. Static Members and Constants": """
+```cpp
 class Utilities {
 public:
   static const double PI;
@@ -334,8 +371,10 @@ const double Utilities::PI = 3.1416;
 
 std::cout << Utilities::PI << std::endl;
 std::cout << Utilities::square(5.0) << std::endl;
+```
 """,
     "11. Generics via Templates": """
+```cpp
 template <typename T>
 class Box {
 public:
@@ -358,8 +397,10 @@ public:
     return a + b;
   }
 };
+```
 """,
     "13. Design Patterns: Singleton": """
+```cpp
 class Logger {
 private:
   std::string name;
@@ -383,18 +424,22 @@ Logger* log2 = Logger::getInstance("backup");
 
 std::cout << log1->getName() << std::endl; // main
 std::cout << log2->getName() << std::endl; // main (singleton)
+```
 """,
     "14. Best Practices": """
+```cpp
 // ✅ Use PascalCase for class names
 // ✅ Keep data members private
 // ✅ Use const for immutability
 // ✅ Prefer abstract classes and interfaces for polymorphism
 // ✅ Document public methods with comments
+```
 """,
 }
 
 cpp_os: dict = {
     "01. Files and Directories": """
+```cpp
 #include <fstream>
 #include <filesystem>
 #include <iostream>
@@ -423,8 +468,10 @@ fs::path current_dir = fs::current_path();
 for (const auto& entry : fs::directory_iterator(current_dir)) {
     std::cout << entry.path() << std::endl;
 }
+```
 """,
     "02. Paths and Manipulation": """
+```cpp
 #include <filesystem>
 #include <iostream>
 namespace fs = std::filesystem;
@@ -440,8 +487,10 @@ fs::path full_path = fs::absolute("data.txt");
 
 // 🔗 Join paths
 fs::path joined = fs::path("folder") / "file.txt";
+```
 """,
     "03. Date and Time": """
+```cpp
 #include <chrono>
 #include <ctime>
 #include <iomanip>
@@ -466,8 +515,10 @@ auto diff = std::chrono::duration_cast<std::chrono::hours>(now - then).count();
 // 🧾 Simple format
 std::ostringstream format;
 format << utc_tm.tm_mday << "/" << utc_tm.tm_mon + 1 << "/" << utc_tm.tm_year + 1900;
+```
 """,
     "04. System Processes": """
+```cpp
 #include <cstdlib>
 #include <iostream>
 
@@ -476,8 +527,10 @@ int result = std::system("echo Hello C++");
 
 // 📡 Output is shown in terminal directly
 std::cout << "Command returned code: " << result << std::endl;
+```
 """,
     "05. Environment Variables": """
+```cpp
 #include <cstdlib>
 #include <iostream>
 
@@ -485,8 +538,10 @@ std::cout << "Command returned code: " << result << std::endl;
 const char* home = std::getenv("HOME");
 if (home)
   std::cout << "HOME: " << home << std::endl;
+```
 """,
     "06. Operating System Detection": """
+```cpp
 #ifdef _WIN32
 std::cout << "🪟 Windows" << std::endl;
 #elif __linux__
@@ -494,8 +549,10 @@ std::cout << "🐧 Linux" << std::endl;
 #elif __APPLE__
 std::cout << "🍎 macOS" << std::endl;
 #endif
+```
 """,
     "07. Continuous Reading / Streams": """
+```cpp
 #include <iostream>
 #include <cstdio>
 #include <memory>
@@ -509,5 +566,6 @@ char buffer[128];
 while (fgets(buffer, sizeof(buffer), pipe.get()) != nullptr) {
     std::cout << "📡 " << buffer;
 }
+```
 """,
 }

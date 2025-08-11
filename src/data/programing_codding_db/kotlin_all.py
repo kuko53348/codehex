@@ -1,5 +1,6 @@
 kotlin_code: dict = {
     "01. Variables and Assignments": """
+```kotlin
 // Immutable vs mutable
 val name: String = "David"     // Constant (String)
 var state: Boolean = true      // Variable (Boolean)
@@ -14,8 +15,10 @@ val person = mapOf("Name" to "Carlos", "Age" to 23)
 // Constants
 const val PI = 3.1415          // Compile-time constant
 val now = java.time.LocalDateTime.now() // Runtime value
+```
 """,
     "02. String Manipulation": """
+```kotlin
 val example = "hello world 12345"
 val words = example.split(" ")
 
@@ -37,8 +40,10 @@ example.padStart(example.length + 3, '0')
 
 // Joining
 words.joinToString("-")
+```
 """,
     "03. Collections: Lists, Sets, Maps": """
+```kotlin
 val numbers = mutableListOf(1, 2, 23, 4)
 val names = mutableListOf("Pedro", "Juan", "Cesar", "Carlos")
 
@@ -64,8 +69,10 @@ person.remove("Name")
 person["Name"] = "Luis"
 person.containsKey("Name")
 person.containsValue("Luis")
+```
 """,
     "04. Key Concepts": """
+```kotlin
 val doubled = List(5) { it * 2 }
 doubled.forEach { println("Number: $it") }
 
@@ -78,8 +85,10 @@ val notNull = nullable ?: "Fallback"
 
 var isTrue = true
 isTrue = !isTrue
+```
 """,
     "05. Parsing and Type Conversion": """
+```kotlin
 val intVal = "12".toInt()
 val doubleVal = "12.5".toDouble()
 val strInt = 12.toString()
@@ -94,8 +103,10 @@ val fruitsList = listOf("apple", "banana", "orange")
 val stringFromList = fruitsList.joinToString(",")
 val setFromList = fruitsList.toSet()
 val mapFromList = fruitsList.mapIndexed { i, v -> i to v }.toMap()
+```
 """,
     "06. Conditionals": """
+```kotlin
 val condition1 = 10
 val condition2 = 5
 
@@ -115,8 +126,10 @@ when (value) {
   "case2" -> println("Case 2 executed")
   else -> println("Default case executed")
 }
+```
 """,
     "07. Loops and Repetition": """
+```kotlin
 for (i in 0..4) {
   if (i == 3) continue
   println("For loop: $i")
@@ -144,8 +157,10 @@ do {
   println("Do-while loop: $count")
   count--
 } while (count > 0)
+```
 """,
     "08. Functions and Lambdas": """
+```kotlin
 fun greet(param: String) {
   println("hello $param")
 }
@@ -162,8 +177,10 @@ fun add(a: Int, b: Int): Int = a + b
 
 val sumResult = add(2, 3)
 val totalSum = add(2, add(2, 3))
+```
 """,
     "09. Error Handling": """
+```kotlin
 try {
   val result = "123".toInt() / 0
   println(result)
@@ -176,11 +193,13 @@ try {
 } finally {
   println("This always executes")
 }
+```
 """,
 }
 
 kotlin_class: dict = {
     "01. Basic Classes": """
+```kotlin
 class Vehicle {
   var brand: String = ""
   var year: Int = 0
@@ -194,8 +213,10 @@ val myCar = Vehicle()
 myCar.brand = "Toyota"
 myCar.year = 2020
 myCar.showInfo() // Brand: Toyota, Year: 2020
+```
 """,
     "02. Properties and Methods": """
+```kotlin
 class User(val id: String) {
   var name: String = ""
 
@@ -207,14 +228,18 @@ class User(val id: String) {
 val u = User("u123")
 u.name = "Ana"
 u.greet() // Hello, Ana! (ID: u123)
+```
 """,
     "03. Constructors": """
+```kotlin
 class Point(val x: Double = 0.0, val y: Double = 0.0)
 
 val p1 = Point(2.0, 3.0)
 val p2 = Point() // Default to origin
+```
 """,
     "04. Inheritance": """
+```kotlin
 open class Animal {
   open fun move() {
     println("The animal moves")
@@ -229,8 +254,10 @@ class Dog : Animal() {
 
 val a: Animal = Dog()
 a.move() // The dog runs
+```
 """,
     "05. Polymorphism": """
+```kotlin
 interface Shape {
   fun area(): Double
 }
@@ -241,8 +268,10 @@ class Circle(val radius: Double) : Shape {
 
 val c: Shape = Circle(2.0)
 println("Area: ${c.area()}")
+```
 """,
     "06. Mixins via Interfaces and Extensions": """
+```kotlin
 interface Musical {
   fun playInstrument()
 }
@@ -255,8 +284,10 @@ class Musician : Musical {
 
 val m = Musician()
 m.playInstrument()
+```
 """,
     "07. Interface Contracts": """
+```kotlin
 interface Person {
   fun greet(): String
 }
@@ -267,8 +298,10 @@ class Impostor : Person {
 
 val i = Impostor()
 println(i.greet())
+```
 """,
     "08. Abstract Classes": """
+```kotlin
 abstract class Vehicle {
   abstract fun move()
 }
@@ -281,8 +314,10 @@ class Bike : Vehicle() {
 
 val b = Bike()
 b.move()
+```
 """,
     "09. Encapsulation": """
+```kotlin
 class Bank {
   private var balance: Double = 0.0
 
@@ -296,8 +331,10 @@ class Bank {
 val myBank = Bank()
 myBank.deposit(100.0)
 println(myBank.getBalance()) // 100.0
+```kotlin
 """,
     "10. Static Members and Constants": """
+```kotlin
 object Utilities {
   const val PI = 3.1416
 
@@ -306,8 +343,10 @@ object Utilities {
 
 println(Utilities.PI)
 println(Utilities.square(5.0))
+```kotlin
 """,
     "11. Generics in Classes": """
+```kotlin
 class Box<T>(val content: T)
 
 val boxInt = Box(42)
@@ -315,8 +354,10 @@ val boxStr = Box("Hello")
 
 println(boxInt.content) // 42
 println(boxStr.content) // Hello
+```
 """,
     "12. Documentation Comments": """
+```kotlin
 /**
  * A simple calculator class.
  */
@@ -327,8 +368,10 @@ class Calculator {
    */
   fun add(a: Int, b: Int): Int = a + b
 }
+```
 """,
     "13. Design Patterns (Singleton)": """
+```kotlin
 object Logger {
   val name = "Main"
 }
@@ -338,18 +381,22 @@ val log2 = Logger
 
 println(log1.name) // Main
 println(log2.name) // Main (shared instance)
+```
 """,
     "14. Best Practices": """
+```kotlin
 // ✅ Use PascalCase for class and interface names
 // ✅ Keep properties private unless needed
 // ✅ Favor data classes for simple models
 // ✅ Use interfaces for polymorphism
 // ✅ Document with /** */ for public APIs
+```
 """,
 }
 
 kotlin_os: dict = {
     "01. Files and Directories": """
+```kotlin
 import java.io.File
 
 // 📖 Read file content
@@ -371,8 +418,10 @@ val currentDir = File(".").absolutePath
 val files = File(currentDir).listFiles()?.forEach {
   println(it.name)
 }
+```
 """,
     "02. Paths and Manipulation": """
+```kotlin
 import java.nio.file.Paths
 
 // 📎 File name
@@ -386,8 +435,10 @@ val fullPath = Paths.get("data.txt").toAbsolutePath()
 
 // 🔗 Join paths
 val joined = Paths.get("folder", "file.txt")
+```
 """,
     "03. Date and Time": """
+```kotlin
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.Duration
@@ -403,8 +454,10 @@ val diff = Duration.between(parsed, now).toHours()
 
 // 🧾 Simple format
 val format = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+```
 """,
     "04. System Processes": """
+```kotlin
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -414,8 +467,10 @@ val reader = BufferedReader(InputStreamReader(process.inputStream))
 
 // 📡 Print output
 reader.lines().forEach { println(it) }
+```
 """,
     "05. Environment Variables": """
+```kotlin
 // 🌍 All environment variables
 val envVars = System.getenv()
 
@@ -430,8 +485,10 @@ when {
   osName.contains("Linux", ignoreCase = true) -> println("🐧 Linux")
   osName.contains("Mac", ignoreCase = true) -> println("🍎 macOS")
 }
+```
 """,
     "07. Continuous Reading / Streams": """
+```kotlin
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -441,5 +498,6 @@ val reader = BufferedReader(InputStreamReader(process.inputStream))
 
 // 🖥️ Stream and display output
 reader.lines().forEach { println("📡 $it") }
+```
 """,
 }

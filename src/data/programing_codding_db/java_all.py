@@ -1,5 +1,6 @@
 java_code: dict = {
     "01. Variables and Assignments": """
+```java
 String name = "David";           // String
 boolean state = true;            // Boolean
 int age = 10;                    // Integer
@@ -10,8 +11,10 @@ final double PI = 3.1415;        // Constant
 Date now = new Date();           // Runtime timestamp
 String lateValue = null;         // Declared, assigned later
 lateValue = "assigned value";
+```
 """,
     "02. String Manipulation": """
+```java
 String example = "hello world 12345";
 String[] words = example.split(" ");
 
@@ -33,8 +36,10 @@ String padRight = example + "000";
 
 // Joining
 String joined = String.join("-", words);
+```
 """,
     "03. Collections: Lists, Sets, Maps": """
+```java
 List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 23, 4));
 List<String> names = new ArrayList<>(Arrays.asList("Pedro", "Juan", "Cesar", "Carlos"));
 
@@ -59,8 +64,10 @@ person.remove("Name");
 person.put("Name", "Luis");
 boolean hasKey = person.containsKey("Name");
 boolean hasValue = person.containsValue("Luis");
+```
 """,
     "04. Key Concepts": """
+```java
 List<Integer> doubled = IntStream.range(0, 5).map(i -> i * 2).boxed().collect(Collectors.toList());
 doubled.forEach(num -> System.out.println("Number: " + num));
 
@@ -75,8 +82,10 @@ String notNull = (nullable != null) ? nullable : "Fallback";
 
 boolean isTrue = true;
 isTrue = !isTrue;
+```
 """,
     "05. Parsing and Type Conversion": """
+```java
 int intVal = Integer.parseInt("12");
 double doubleVal = Double.parseDouble("12.5");
 String strInt = Integer.toString(12);
@@ -87,8 +96,10 @@ List<String> listFromStr = Arrays.asList(fruits.split(","));
 Set<String> setFromStr = new HashSet<>(listFromStr);
 Map<Integer, String> mapFromStr = IntStream.range(0, listFromStr.size())
   .boxed().collect(Collectors.toMap(i -> i, i -> listFromStr.get(i)));
+```
 """,
     "06. Conditionals": """
+```java
 int condition1 = 10;
 int condition2 = 5;
 
@@ -108,8 +119,10 @@ switch (value) {
   case "case2": System.out.println("Case 2 executed"); break;
   default: System.out.println("Default case executed");
 }
+```
 """,
     "07. Loops and Repetition": """
+```java
 for (int i = 0; i < 5; i++) {
   if (i == 3) continue;
   System.out.println("For loop: " + i);
@@ -137,8 +150,10 @@ do {
   System.out.println("Do-while loop: " + count);
   count--;
 } while (count > 0);
+```
 """,
     "08. Functions and Methods": """
+```java
 void greet(String param) {
   System.out.println("hello " + param);
 }
@@ -152,8 +167,10 @@ int add(int a, int b) { return a + b; }
 
 int sumResult = add(2, 3);
 int totalSum = add(2, add(2, 3));
+```
 """,
     "09. Error Handling": """
+```java
 try {
   int result = Integer.parseInt("123") / 0;
   System.out.println(result);
@@ -166,11 +183,13 @@ try {
 } finally {
   System.out.println("This always executes");
 }
+```
 """,
 }
 
 java_class: dict = {
     "01. Basic Class and Instantiation": """
+```java
 public class Vehicle {
   String brand;
   int year;
@@ -184,8 +203,10 @@ Vehicle myCar = new Vehicle();
 myCar.brand = "Toyota";
 myCar.year = 2020;
 myCar.showInfo(); // Brand: Toyota, Year: 2020
+```
 """,
     "02. Properties and Methods": """
+```java
 public class User {
   private String id;
   public String name;
@@ -202,8 +223,10 @@ public class User {
 
 User u = new User("u123", "Ana");
 u.greet(); // Hello, Ana! (ID: u123)
+```
 """,
     "03. Constructors": """
+```java
 public class Point {
   double x, y;
 
@@ -219,8 +242,10 @@ public class Point {
 
 Point p1 = new Point(2, 3);
 Point p2 = new Point(); // (0,0)
+```
 """,
     "04. Inheritance": """
+```java
 class Animal {
   void move() {
     System.out.println("The animal moves");
@@ -236,8 +261,10 @@ class Dog extends Animal {
 
 Animal a = new Dog();
 a.move(); // The dog runs
+```
 """,
     "05. Polymorphism": """
+```java
 interface Shape {
   double area();
 }
@@ -254,8 +281,10 @@ class Circle implements Shape {
 
 Shape s = new Circle(2.0);
 System.out.println("Area: " + s.area());
+```
 """,
     "06. Mixins via Interfaces": """
+```java
 interface Musical {
   void playInstrument();
 }
@@ -268,8 +297,10 @@ class Musician implements Musical {
 
 Musician m = new Musician();
 m.playInstrument();
+```
 """,
     "07. Interface Contracts": """
+```java
 interface Person {
   String greet();
 }
@@ -282,8 +313,10 @@ class Impostor implements Person {
 
 Person i = new Impostor();
 System.out.println(i.greet());
+```
 """,
     "08. Abstract Classes": """
+```java
 abstract class Vehicle {
   abstract void move();
 }
@@ -296,8 +329,10 @@ class Bike extends Vehicle {
 
 Vehicle b = new Bike();
 b.move();
+```
 """,
     "09. Encapsulation": """
+```java
 class Bank {
   private double balance = 0;
 
@@ -313,8 +348,10 @@ class Bank {
 Bank myBank = new Bank();
 myBank.deposit(100);
 System.out.println(myBank.getBalance()); // 100.0
+```
 """,
     "10. Static Members and Constants": """
+```java
 class Utilities {
   public static final double PI = 3.1416;
 
@@ -325,8 +362,10 @@ class Utilities {
 
 System.out.println(Utilities.PI);
 System.out.println(Utilities.square(5));
+```
 """,
     "11. Generics in Classes": """
+```java
 class Box<T> {
   T content;
 
@@ -340,8 +379,10 @@ Box<String> boxStr = new Box<>("Hello");
 
 System.out.println(boxInt.content); // 42
 System.out.println(boxStr.content); // Hello
+```
 """,
     "12. Documentation Comments": """
+```java
 /**
  * A calculator that performs arithmetic operations.
  */
@@ -354,8 +395,10 @@ class Calculator {
     return a + b;
   }
 }
+```
 """,
     "13. Design Patterns (Singleton)": """
+```java
 class Logger {
   private static Logger instance;
   private String name;
@@ -381,18 +424,22 @@ Logger log2 = Logger.getInstance("backup");
 
 System.out.println(log1.getName()); // main
 System.out.println(log2.getName()); // main (shared)
+```
 """,
     "14. Best Practices": """
+```java
 // ✅ Use PascalCase for class and interface names
 // ✅ Keep fields private and expose via getters/setters
 // ✅ Use final for constants
 // ✅ Document public methods with /** */
 // ✅ Prefer interfaces for abstraction
+```
 """,
 }
 
 java_os: dict = {
     "01. Files and Directories": """
+```java
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -418,8 +465,10 @@ File dir = new File(currentDir);
 for (File file : dir.listFiles()) {
   System.out.println(file.getName());
 }
+```
 """,
     "02. Paths and Manipulation": """
+```java
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -434,8 +483,10 @@ Path fullPath = Paths.get("data.txt").toAbsolutePath();
 
 // 🔗 Join paths
 Path joined = Paths.get("folder", "file.txt");
+```
 """,
     "03. Date and Time": """
+```java
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -452,8 +503,10 @@ Duration diff = Duration.between(parsed.atStartOfDay(), now);
 
 // 🧾 Simple format
 String formatted = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+```
 """,
     "04. System Processes": """
+```java
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -463,15 +516,19 @@ Process process = Runtime.getRuntime().exec("echo Hello Java");
 // 📡 Print output
 BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 reader.lines().forEach(System.out::println);
+```
 """,
     "05. Environment Variables": """
+```java
 // 🌍 All environment variables
 Map<String, String> env = System.getenv();
 
 // 🏡 HOME directory (Unix)
 String home = env.get("HOME");
+```
 """,
     "06. Operating System Detection": """
+```java
 String os: dict = System.getProperty("os.name").toLowerCase();
 
 if (os.contains("win")) {
@@ -481,8 +538,10 @@ if (os.contains("win")) {
 } else if (os.contains("nix") || os.contains("nux")) {
   System.out.println("🐧 Linux");
 }
+```
 """,
     "07. Continuous Reading / Streams": """
+```java
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -492,5 +551,6 @@ Process process = Runtime.getRuntime().exec("ping -c 4 localhost");
 // 🖥️ Stream and display output
 BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 reader.lines().forEach(line -> System.out.println("📡 " + line));
+```
 """,
 }

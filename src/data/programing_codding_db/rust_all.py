@@ -1,5 +1,6 @@
 rust_code: dict = {
     "01. Variables and Assignments": """
+```rust
 // Primitive values
 let name = "David";              // &str
 let state: bool = true;          // Boolean
@@ -15,8 +16,10 @@ person.insert("Age", 24);
 // Constants
 const PI: f64 = 3.1415;
 let now = chrono::Local::now(); // Requires chrono crate
+```
 """,
     "02. String Manipulation": """
+```rust
 let example = String::from("hello world 12345");
 
 // Basic operations
@@ -35,8 +38,10 @@ example.replace("h", "H");     // Replace text
 let padded = format!("{:<width$}", example, width=example.len()+3);
 let words: Vec<&str> = example.split(' ').collect();
 let joined = words.join("-");
+```
 """,
     "03. Collections: Vectors, Sets, and Maps": """
+```rust
 let mut numbers = vec![1, 2, 23, 4];
 let mut names = vec!["Pedro", "Juan", "Cesar", "Carlos"];
 
@@ -59,13 +64,15 @@ person.insert("Name", "Luis");
 person.remove("Name");
 person.contains_key("Name");
 person.values().any(|&v| v == "Luis");
+```
 """,
     "04. Key Concepts": """
+```rust
 let doubled: Vec<i32> = (0..5).map(|i| i * 2).collect();
 doubled.iter().for_each(|num| println!("Number: {}", num));
 
 fn greet(is_morning: bool) -> &'static str {
-  if is_morning { "Good Morning" } else { "Hello" }
+    if is_morning { "Good Morning" } else { "Hello" }
 }
 
 let click_button = || println!("Clicked Bro");
@@ -75,8 +82,10 @@ let fallback = nullable.unwrap_or_else(|| "fallback".to_string());
 
 let mut is_true = true;
 is_true = !is_true;
+```
 """,
     "05. Parsing and Type Conversion": """
+```rust
 let int_val: i32 = "12".parse().unwrap();
 let float_val: f64 = "12.5".parse().unwrap();
 let str_val = 12.to_string();
@@ -85,103 +94,113 @@ let fruits = "apple,banana,orange";
 let list: Vec<&str> = fruits.split(',').collect();
 let set: HashSet<&str> = list.iter().cloned().collect();
 let map: HashMap<usize, &str> = list.iter().enumerate().collect();
+```
 """,
     "06. Conditionals": """
+```rust
 let condition1 = 10;
 let condition2 = 5;
 
 let result = if true { "True case" } else { "False case" };
 
 if condition1 == 10 {
-  println!("Condition1 is true");
+    println!("Condition1 is true");
 } else if condition2 == 5 {
-  println!("Condition2 is true");
+    println!("Condition2 is true");
 } else {
-  println!("All conditions false");
+    println!("All conditions false");
 }
 
 let value = "case2";
 match value {
-  "case1" => println!("Case 1 executed"),
-  "case2" => println!("Case 2 executed"),
-  _ => println!("Default case executed"),
+    "case1" => println!("Case 1 executed"),
+    "case2" => println!("Case 2 executed"),
+    => println!("Default case executed"),
 }
+```
 """,
     "07. Loops and Repetition": """
+```rust
 for i in 0..5 {
-  if i == 3 { continue; }
-  println!("For loop: {}", i);
-  if i == 4 { break; }
+    if i == 3 { continue; }
+    println!("For loop: {}", i);
+    if i == 4 { break; }
 }
 
 let names = vec!["Maria", "Joaquin", "Luisa"];
 for name in &names {
-  println!("Hello {}", name);
+    println!("Hello {}", name);
 }
 
 let ages: HashMap<&str, i32> = [("Maria", 20), ("Joaquin", 21), ("Luisa", 22)]
-  .iter().cloned().collect();
+    .iter().cloned().collect();
 
 for (name, age) in &ages {
-  println!("{} is {} years old", name, age);
+    println!("{} is {} years old", name, age);
 }
 
 let mut count = 0;
 while count < 3 {
-  println!("While loop: {}", count);
-  count += 1;
+    println!("While loop: {}", count);
+    count += 1;
 }
 
 count = 3;
 loop {
-  println!("Do-while loop: {}", count);
-  count -= 1;
-  if count == 0 { break; }
+    println!("Do-while loop: {}", count);
+    count -= 1;
+    if count == 0 { break; }
 }
+```
 """,
     "08. Functions and Methods": """
+```rust
 fn greet(param: &str) {
-  println!("Hello {}", param);
+    println!("Hello {}", param);
 }
 
 let greet_lambda = |param: &str| println!("Hello {}", param);
 
 fn return_string(param: &str) -> String {
-  format!("Hello {}", param)
+    format!("Hello {}", param)
 }
 
 fn return_int(param: i32) -> i32 {
-  param
+    param
 }
 
 fn return_tuple(param: &str) -> (i32, &str) {
-  (123, param)
+    (123, param)
 }
 
 fn add(a: i32, b: i32) -> i32 {
-  a + b
+    a + b
 }
 
 let sum = add(2, 3);
 let total = add(2, add(2, 3));
+```
 """,
     "09. Error Handling": """
+```rust
 let result = std::panic::catch_unwind(|| {
-  let parsed: i32 = "123".parse().unwrap();
-  parsed / 0
+    let parsed: i32 = "123".parse().unwrap();
+    parsed / 0
 });
 
 match result {
-  Ok(_) => println!("Success"),
-  Err(_) => println!("An error occurred"),
+    Ok(_) => println!("Success"),
+    Err(_) => println!("An error occurred"),
 }
 
 println!("This always executes");
+```
 """,
 }
 
 rust_class: dict = {
     "01. Basic Structs and Methods": """
+```rust
 // Define a basic struct and method
 struct Vehicle {
     brand: String,
@@ -220,8 +239,10 @@ let u = User {
 };
 
 u.greet(); // Hello, Ana! (ID: u123)
+```
 """,
     "03. Constructors with impl blocks": """
+```rust
 struct Point {
     x: f64,
     y: f64,
@@ -239,6 +260,7 @@ impl Point {
 
 let p1 = Point::new(2.0, 3.0);
 let p2 = Point::origin(); // (0.0, 0.0)
+```
 """,
     "04. Inheritance via Traits": """
 trait Movable {
@@ -255,8 +277,10 @@ impl Movable for Dog {
 
 let a = Dog;
 a.move_it(); // The dog runs
+```
 """,
     "05. Polymorphism with Trait Objects": """
+```rust
 trait Shape {
     fn area(&self) -> f64;
 }
@@ -273,8 +297,10 @@ impl Shape for Circle {
 
 let c = Circle { radius: 2.0 };
 println!("Area: {}", c.area());
+```
 """,
     "06. Mixins using Traits": """
+```rust
 trait Musical {
     fn play(&self) {
         println!("Playing instrument");
@@ -287,8 +313,10 @@ impl Musical for Musician {}
 
 let m = Musician;
 m.play();
+```
 """,
     "07. Interface Contracts": """
+```rust
 trait Person {
     fn greet(&self);
 }
@@ -303,8 +331,10 @@ impl Person for Impostor {
 
 let i = Impostor;
 i.greet();
+```
 """,
     "08. Abstract-like via Traits": """
+```rust
 trait Vehicle {
     fn move_it(&self);
 }
@@ -319,8 +349,10 @@ impl Vehicle for Bike {
 
 let b = Bike;
 b.move_it();
+```
 """,
     "09. Encapsulation with Privacy": """
+```rust
 mod bank {
     pub struct Bank {
         balance: f64,
@@ -344,8 +376,10 @@ mod bank {
 let mut my_bank = bank::Bank::new();
 my_bank.deposit(50.0);
 println!("Balance: {}", my_bank.get_balance());
+```
 """,
     "10. Static Methods and Constants": """
+```rust
 struct Utilities;
 
 impl Utilities {
@@ -358,8 +392,10 @@ impl Utilities {
 
 println!("{}", Utilities::PI);         // 3.1416
 println!("{}", Utilities::square(5.0)); // 25.0
+```
 """,
     "11. Generics in Structs": """
+```rust
 struct Box<T> {
     content: T,
 }
@@ -369,8 +405,10 @@ let box_str = Box { content: "Hello" };
 
 println!("{}", box_int.content);  // 42
 println!("{}", box_str.content);  // Hello
+```
 """,
     "12. Documentation Comments": """
+```rust
 /// A calculator for basic operations
 struct Calculator;
 
@@ -383,8 +421,10 @@ impl Calculator {
 
 // Accessing doc (used in cargo doc)
 let result = Calculator::add(2, 3);
+```
 """,
     "13. Design Patterns": """
+```
 // Singleton-like pattern
 struct Logger {
     name: String,
@@ -405,18 +445,22 @@ let log2 = Logger::new("backup");
 
 println!("{}", log1.name);  // main
 println!("{}", log2.name);  // main (shared instance)
+```
 """,
     "14. Best Practices": """
+```rust
 // ✅ Use CamelCase for struct and trait names
 // ✅ Keep fields private unless exposing via methods
 // ✅ Prefer trait-based composition over deep inheritance
 // ✅ Document public APIs using /// comments
 // ✅ Avoid logic inside constructors—favor builders if complex
+```
 """,
 }
 
 rust_os: dict = {
     "01. Files and Directories": """
+```rust
 use std::fs::{read_to_string, write, remove_file};
 use std::env;
 use std::path::Path;
@@ -441,8 +485,10 @@ for entry in current_dir.read_dir().unwrap() {
     let path = entry.unwrap().path();
     println!("{:?}", path);
 }
+```
 """,
     "02. Paths and Manipulation": """
+```rust
 use std::path::{Path, PathBuf};
 
 // 📎 File name
@@ -456,8 +502,10 @@ let full = env::current_dir().unwrap().join("data.txt");
 
 // 🔗 Join paths
 let joined = PathBuf::from("folder").join("file.txt");
+```
 """,
     "03. Date and Time": """
+```rust
 use chrono::{Local, NaiveDate, Duration};
 
 // ⏰ Current date
@@ -474,8 +522,10 @@ let diff = now.date_naive().signed_duration_since(parsed);
 
 // 🧾 Simple format
 let format = format!("{}/{}/{}", now.day(), now.month(), now.year());
+```
 """,
     "04. System Processes": """
+```rust
 use std::process::Command;
 
 // 🖥️ Run shell command
@@ -486,8 +536,10 @@ let output = Command::new("echo")
 
 // 📡 Print output
 println!("{}", String::from_utf8_lossy(&output.stdout));
+```
 """,
     "05. Environment Variables": """
+```rust
 use std::env;
 
 // 🌍 All environment variables
@@ -495,8 +547,10 @@ let env_vars = env::vars();
 
 // 🏡 HOME directory (Unix-like)
 let home = env::var("HOME").unwrap_or("N/A".into());
+```
 """,
     "06. Operating System Detection": """
+```rust
 #[cfg(target_os: dict = "windows")]
 println!("🪟 This is Windows");
 
@@ -505,8 +559,10 @@ println!("🐧 This is Linux");
 
 #[cfg(target_os: dict = "macos")]
 println!("🍎 This is macOS");
+```
 """,
     "07. Continuous Reading / Streams": """
+```rust
 use std::process::{Command, Stdio};
 use std::io::{BufReader, BufRead};
 
@@ -524,5 +580,6 @@ if let Some(stdout) = process.stdout {
         println!("📡 {}", line.unwrap());
     }
 }
+```
 """,
 }

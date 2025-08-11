@@ -1,6 +1,6 @@
 dart_code: dict = {
     "01. Variables and Assignments": """
-
+```dart
 // Basic data types
 String name = 'David';      // String
 bool state = true;          // Boolean
@@ -23,8 +23,10 @@ final now = DateTime.now(); // Runtime constant Compile
 late String lateAssignation;// Declare now, initialize later
 
 lateAssignation = 'assigned value';
+```
 """,
     "02. String Manipulation": """
+```dart
 
 String example = "hello world 12345";
 List<String> words = example.split(' ');
@@ -54,9 +56,10 @@ example.padLeft(example.length + 3, '0')  // <= Pad left
 // Splitting and joining
 example.split(' ')              // <= split
 words.join('-')                 // <= join
+```
 """,
     "03. Collections: Lists, Sets, and Maps": """
-
+```dart
 // Lists (ordered, allows duplicates)
 List<dynamic> mixedList = [1, 'Juan', 23, 'Juan'];
 List<int> numbers = [1, 2, 23, 4];
@@ -103,9 +106,10 @@ person.remove('Name');        // <= Remove
 person['Name'] = 'Luis';      // <= Update
 person.containsKey('Name');   // <= Contains keyName? true or false
 person.containsValue('Luis'); // <=  Contains valueName? true or false
+```
 """,
     "04. Key Concepts": """
-
+```dart
 // one line assigments
 var doubled = List.generate(5, (index) => index * 2)                // <= List generation
 doubled.forEach((num) => print('Number: $num'))                     // <= ForEach with arrow function
@@ -124,9 +128,10 @@ String? notNullVar : nullVar;
 
 bool isTrue = true;
 isTrue =! toFalse;
+```
 """,
     "05. Parsing and Type Conversion": """
-
+```dart
 // Parsing
 int example = int.parse('12')         // <= String to int
 double example = double.parse('12.5') // <= String to double
@@ -156,9 +161,10 @@ final fruitsMap = {0: 'apple', 1: 'banana'};      // <= fruitsMap
 final stringFromMap = fruitsMap.values.join(','); // <= Map to String
 final listFromMap = fruitsMap.values.toList();    // <= Map to List
 final setFromMap = fruitsMap.values.toSet();      // <= Map to Set
+```
 """,
     "06. Conditionals": """
-
+```dart
 int condition1 = 10;
 int condition2 = 5;
 
@@ -190,9 +196,10 @@ switch (value) {
   default:
     print("Default case executed");
 }
+```
 """,
     "07. Loops and Repetition": """
-
+```dart
 // For loop list.lenght
 for (int i = 0; i < 5; i++) {
   if (i == 3) continue;
@@ -222,10 +229,10 @@ do {
   print('Do-while loop: $count');
   count--;
 } while (count > 0);
-
+```
 """,
     "08. Functions and Methods": """
-
+```dart
 // One line code
 callFuction(parameter) => print('hello $parameter');
 
@@ -254,7 +261,7 @@ int callStringFuction(int parameter){
 
 // functions in dart are objects and have a type
 int add(int a, int b){
-   return a+b;
+  return a+b;
 }
 
 // functions can be assigned to variables
@@ -262,10 +269,10 @@ int sum = add(2,3); // <= returns: 5
 
 // can be passed as arguments to other functions
 int totalSum = add(2, add(2,3)); // <= returns : 7
-
+```
 """,
     "09. Error Handling": """
-
+```dart
 try {
   // Potentially error-prone code
   double result = int.parse('123') / 0;
@@ -279,6 +286,7 @@ try {
 } finally {
   print('This always executes');
 }
+```
 """,
 }
 
