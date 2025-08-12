@@ -43,7 +43,7 @@ class CardLayerOne(ft.Container):
                         # margin=ft.margin.only(top=8),
                         border_radius=ft.border_radius.all(32),
                         width=340,
-                        height=108,
+                        height=130,
                         image=ft.DecorationImage(
                             src=image_decoration,
                             fit="cover",
