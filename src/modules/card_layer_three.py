@@ -22,7 +22,7 @@ class CardLayerThree(ft.Container):
         self.expand = True
         self.bgcolor = ft.Colors("transparent")
         self.alignment = ft.alignment.top_center
-        self.padding = ft.padding.only(left=8, right=8, bottom=0, top=0)
+        self.padding = ft.padding.only(left=4, right=4, bottom=4, top=4)
         self.margin = ft.margin.only(left=0, right=0, bottom=0, top=0)
 
         # content of current widget
@@ -67,6 +67,6 @@ class CardLayerThree(ft.Container):
         )
 
     def go_to_next_page(self, go_to: str = ""):
-        print(f"[+] Layer three: {self.header}")
+        # print(f"[+] Layer three: {self.header}")
         self.page.session.set("layer_three_selected", self.header)
         self.page.go(go_to)

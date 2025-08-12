@@ -2,38 +2,11 @@ import flet as ft
 
 from data.main_model_codding_db import dict_object_seralization
 from model.ModelPageView import ModelPageView
+from model.ModelMainNavbarView import page_app_view
 from pages.page_one_menu import PageOneMenu
 from pages.main_menu import MainMenu
 from pages.markdown_page_view import MarkDownPageView
 from pages.page_two_menu import PageTwoMenu
-
-
-class page_app_view(ft.View):
-    """'
-    ## Create frame view
-    ```python
-    >>> current_view = page_app_view(
-    >>>                page = self.page,
-    >>>                route = self.route,
-    >>>                content = ft.ElevatedButton(
-    >>>                    text = 'Home',
-    >>>                    on_click = lambda _: self.page.go('/'),
-    >>> ))
-    ```
-    """
-
-    def __init__(
-        self, page: object = None, route: str = str(), content: object = None
-    ) -> None:
-        super().__init__()
-        self.page = page
-        self.route = route
-        self.padding = 0
-        self.content = content
-        self.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-        self.vertical_alignment = ft.MainAxisAlignment.CENTER
-
-        self.controls: list = [self.content]
 
 
 class flet_box_app:
@@ -84,6 +57,7 @@ class flet_box_app:
                 page_app_view(
                     page=self.page,
                     route=self.route,
+                    show_navigation=True,
                     content=MainMenu(
                         page=self.page,
                         menu_list=dict_object_seralization(),
@@ -97,7 +71,7 @@ class flet_box_app:
             self.page.views.append(
                 ModelPageView(
                     page=self.page,
-                    title_page="layer two",
+                    title_page=header,
                     back_click=lambda widget: self.page.go("/home"),
                     content=PageOneMenu(
                         page=self.page,
@@ -115,7 +89,7 @@ class flet_box_app:
             self.page.views.append(
                 ModelPageView(
                     page=self.page,
-                    title_page="layer three",
+                    title_page=layer_two_selected,
                     back_click=lambda widget: self.page.go("/index_layer_one"),
                     content=PageTwoMenu(
                         page=self.page,
@@ -138,6 +112,8 @@ class flet_box_app:
                 MarkDownPageView(
                     page=self.page,
                     md_code=code,
+                    text_header=layer_three_selected,
+                    image_theme=f"{header}.jpeg",
                 )
             )
 

@@ -29,13 +29,21 @@ class ModelPageView(ft.View):
         )
         self.vertical_alignment = ft.MainAxisAlignment.START
         self.horizontal_alignment = ft.CrossAxisAlignment.START
-        # self.foreground_decoration = ft.BoxDecoration(
-        #     image=ft.DecorationImage(
-        #         src="card_shoppin_add.png", fit=ft.ImageFit.COVER, opacity=0.08
-        #     )
-        # )
 
         self.expand = True
-        # bottom_appbar=ft.BottomAppBar(bgcolor=ft.Colors.GREY_900),
-        self.bgcolor = "#282828"
+        self.bgcolor = ft.Colors("grey900")
+        self.navigation_bar = ft.NavigationBar(
+            selected_index=0,
+            bgcolor=ft.Colors("grey900"),
+            height=60,
+            on_change=lambda _: self.page.go("/home"),
+            elevation=32,
+            destinations=[
+                ft.NavigationBarDestination(
+                    label="Starters",
+                    icon=ft.Icons.HOME_OUTLINED,
+                    selected_icon=ft.Icons.HOME_ROUNDED,
+                ),
+            ],
+        )
         self.controls = [self.controls_widgets]

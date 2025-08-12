@@ -17,7 +17,7 @@ class CardLayerOne(ft.Container):
         self.expand = True
         self.bgcolor = ft.Colors("transparent")
         self.alignment = ft.alignment.top_center
-        self.padding = ft.padding.only(left=0, right=0, bottom=0, top=0)
+        self.padding = ft.padding.only(left=4, right=4, bottom=4, top=4)
         self.margin = ft.margin.only(left=0, right=0, bottom=0, top=0)
         self.text_index = text_index
         # content of current widget
@@ -73,7 +73,7 @@ class CardLayerOne(ft.Container):
                                     ),
                                     # expand=True,
                                     content=ft.Icon(
-                                        name="shopping_cart_checkout_sharp",
+                                        name=ft.Icons.DATA_ARRAY_ROUNDED,
                                     ),
                                 ),
                             ],
@@ -104,6 +104,6 @@ class CardLayerOne(ft.Container):
         )
 
     def go_to_next_page(self, go_to: object = None):
-        print(f"[+] Layer one: {self.text_index}")
+        # print(f"[+] Layer one: {self.text_index}")
         self.page.session.set("layer_one_selected", self.text_index)
         self.page.go(go_to)

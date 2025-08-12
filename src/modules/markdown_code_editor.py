@@ -41,7 +41,7 @@ class code_editor(ft.Container):
         self.blur = (12, 12)
         # self.expand = True
         self.image = ft.DecorationImage(
-            src=image_theme, fit=ft.ImageFit.COVER, opacity=0.2
+            src=image_theme, fit=ft.ImageFit.COVER, opacity=0.1
         )  # NONE CONTAIN COVER FILL FIT_HEIGHT FIT_WIDTH SCALE_DOWN
         # top_left,top_center,top_right,center_lef,center,center_righ,bottom_left,bottom_right,bottom_center
         self.alignment = ft.alignment.top_center

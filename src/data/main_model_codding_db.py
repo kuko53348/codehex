@@ -34,6 +34,7 @@ python = ModelDataView
 rust = ModelDataView
 swift = ModelDataView
 
+
 # framework codding  list
 flutter = FlutterModelView
 
@@ -41,14 +42,14 @@ flutter = FlutterModelView
 def dict_object_seralization() -> dict:
 
     return {
-        "cpp": cpp(code=cpp_code, class_code=cpp_class, os_code=cpp_os),
-        "csharp": csharp(code=csharp_code, class_code=csharp_class, os_code=csharp_os),
-        "dart": dart(code=dart_code, class_code=dart_class, os_code=dart_os),
-        "java": java(code=java_code, class_code=java_class, os_code=java_os),
-        "kotlin": kotlin(code=kotlin_code, class_code=kotlin_class, os_code=kotlin_os),
-        "python": python(code=python_code, class_code=python_class, os_code=python_os),
-        "rust": rust(code=rust_code, class_code=rust_class, os_code=rust_os),
-        "swift": swift(code=swift_code, class_code=swift_class, os_code=swift_os),
+        "cpp": cpp(code=cpp_code, class_oob=cpp_class, module_os=cpp_os),
+        "csharp": csharp(code=csharp_code, class_oob=csharp_class, module_os=csharp_os),
+        "dart": dart(code=dart_code, class_oob=dart_class, module_os=dart_os),
+        "java": java(code=java_code, class_oob=java_class, module_os=java_os),
+        "kotlin": kotlin(code=kotlin_code, class_oob=kotlin_class, module_os=kotlin_os),
+        "python": python(code=python_code, class_oob=python_class, module_os=python_os),
+        "rust": rust(code=rust_code, class_oob=rust_class, module_os=rust_os),
+        "swift": swift(code=swift_code, class_oob=swift_class, module_os=swift_os),
         "flutter": flutter(
             flutter_class=flutter_class,
             flutter_async=flutter_async,
@@ -62,3 +63,10 @@ def dict_object_seralization() -> dict:
             flutter_utilities=flutter_utilities,
         ),
     }
+
+
+def show_only_frameworks() -> list:
+    # its necessary separate framworks that will show
+    # on secod screen
+
+    return ["flutter"]

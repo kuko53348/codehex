@@ -6,7 +6,12 @@ from modules.markdown_code_editor import code_editor
 class MarkDownPageView(ft.View):
 
     def __init__(
-        self, page: object = None, content: object = None, md_code: str = ""
+        self,
+        page: object = None,
+        content: object = None,
+        md_code: str = "",
+        text_header: str = "",
+        image_theme: str = "logo.png",
     ) -> None:
         super().__init__()
         self.page = page
@@ -19,7 +24,8 @@ class MarkDownPageView(ft.View):
             ),
             title=ft.Text(
                 expand=True,
-                value="06. Conditionals",
+                size=14,
+                value=text_header,
                 text_align=ft.TextAlign.CENTER,
                 weight=ft.FontWeight.BOLD,
                 font_family="Consolas",
@@ -50,7 +56,7 @@ class MarkDownPageView(ft.View):
                     visible=True,
                     show_bar_cody=True,
                     page=self.page,
-                    image_theme="icon.png",
+                    image_theme=image_theme,
                     md_code=md_code,
                 ),
             ),

@@ -2,7 +2,7 @@ flutter_class: dict = {
     "01. Basic Class": """
 Defines a minimal structure with a positional constructor and a visual method.
 
-`dart
+```dart
 class Person {
   final String name;
   final int age;
@@ -14,12 +14,12 @@ class Person {
 
 final instance = Person('Javier', 35);
 instance.build(); // [+] >> name: Javier age: 35
-`
+```
 """,
     "02. Simple Serialization": """
 A model-like structure with basic fields. Ideal for JSON mapping or service logic.
 
-`dart
+```dart
 class ProductStore {
   final String name;
   final int age;
@@ -28,12 +28,12 @@ class ProductStore {
 
   ProductStore(this.name, this.age, this.occupation, this.number);
 }
-`
+```
 """,
     "03. Inheritance (extends)": """
 The child class inherits and overrides the visual behavior.
 
-`dart
+```dart
 class Person {
   final String name;
   final int age;
@@ -49,12 +49,12 @@ class Manager extends Person {
   @override
   void build() => print('[+] >> newName: $name newAge: $age');
 }
-`
+```
 """,
     "04. Interface Implementation": """
 A class implements a contract, ensuring required methods exist.
 
-`dart
+```dart
 class BuilderContract {
   void build() {}
 }
@@ -68,7 +68,7 @@ class Architect implements BuilderContract {
   @override
   void build() => print('[•] >> Architect $name, age $age');
 }
-`
+```
 """,
     "Extras and Commentary": """
 - The d.Class.* prefixes mirror IDE-friendly snippets or plugin triggers.
@@ -88,17 +88,17 @@ flutter_async: dict = {
     "01. Basic Async Function": """
 Defines an asynchronous function with a delayed action.
 
-`dart
+```dart
 Future<void> showNotification() async {
   await Future.delayed(Duration(seconds: 1));
   print('🔔 Notification sent');
 }
-`
+```
 """,
     "02. Async Function with Return": """
 Simulates an async operation returning a message. Uses .then() without await.
 
-`dart
+```dart
 Future<String> loadWelcomeMessage() async {
   await Future.delayed(Duration(seconds: 1));
   return '👋 Welcome, Javier!';
@@ -109,7 +109,7 @@ void executeAsyncTask() {
     print('✅ Result: $msg');
   });
 }
-`
+```
 """,
     "03. Commentary and Notes": """
 - Use Future<void> when no value needs to be returned.
@@ -126,7 +126,7 @@ flutter_ui: dict = {
     "01. Container Basics": """
 Creates a stylized box for layout and visual structure.
 
-`dart
+```dart
 Container(
   padding: EdgeInsets.all(8),
   height: 320,
@@ -139,12 +139,12 @@ Container(
   alignment: Alignment.center,
   child: Text('Container TextStyle', style: TextStyle(color: Colors.cyanAccent)),
 );
-`
+```
 """,
     "02. AnimatedContainer": """
 Creates smooth transitions in size, color, shape.
 
-`dart
+```dart
 AnimatedContainer(
   duration: Duration(seconds: 1),
   height: 320,
@@ -156,12 +156,12 @@ AnimatedContainer(
   alignment: Alignment.center,
   child: Text('AnimatedContainer', style: TextStyle(color: Colors.cyanAccent)),
 );
-`
+```
 """,
     "03. Text Styling": """
 Defines font weight, size, color, and alignment.
 
-`dart
+```dart
 Text(
   'Sample Text',
   textAlign: TextAlign.left,
@@ -171,32 +171,32 @@ Text(
     color: Colors.grey,
   ),
 );
-`
+```
 """,
     "04. Image Display": """
 Includes network and asset images with decoration options.
 
-`dart
+```dart
 Image.asset(
   'lib/images/demo.jpg',
   fit: BoxFit.cover,
 );
-`
+```
 """,
     "05. Layout Visual Hints": """
 Helps position and align widgets across screen sizes.
 
-`dart
+```dart
 AspectRatio(
   aspectRatio: 1/1,
   child: Container(color: Colors.red, child: Text('AspectRatio')),
 );
-`
+```
 """,
     "06. Alignment and Box Effects": """
 Combines blur, clipping, alignment, scaling.
 
-`dart
+```dart
 ImageFiltered(
   imageFilter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
   child: FlutterLogo(size: 100),
@@ -211,12 +211,12 @@ Transform.scale(
   scale: 1.0,
   child: Text('Scaled'),
 );
-`
+```
 """,
     "07. Theme and Style Control": """
 Customizes color schemes and brightness settings.
 
-`dart
+```dart
 ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: ColorScheme.dark(
@@ -225,7 +225,7 @@ ThemeData darkMode = ThemeData(
     secondary: Colors.grey.shade700,
   ),
 );
-`
+```
 """,
     "08. Visual Effects Commentary": """
 - Use AnimatedContainer, ClipRRect, and Transform for layered motion.
@@ -240,7 +240,7 @@ flutter_state: dict = {
     "01. Stateful Widget": """
 Creates a widget that can hold and update its internal state.
 
-`dart
+```dart
 class CounterWidget extends StatefulWidget {
   const CounterWidget({super.key});
 
@@ -263,12 +263,12 @@ class _CounterWidgetState extends State<CounterWidget> {
     );
   }
 }
-`
+```
 """,
     "02. ValueNotifier (Reactive State)": """
 A lightweight reactive variable. Listens for changes and rebuilds UI.
 
-`dart
+```dart
 ValueNotifier<String> messageNotifier = ValueNotifier<String>('Hello world');
 
 ValueListenableBuilder(
@@ -277,23 +277,23 @@ ValueListenableBuilder(
     return Text(value);
   },
 );
-`
+```
 """,
     "03. Update Notifier Value": """
 Modify a ValueNotifier's value manually.
 
-`dart
+```dart
 messageNotifier.value = 'Updated message';
-`
+```
 """,
     "04. Notifier Class Structure": """
 Encapsulate notifiers inside a dedicated reactive class.
 
-`dart
+```dart
 class ReactiveStore {
   ValueNotifier<String> username = ValueNotifier<String>('Javier');
 }
-`
+```
 """,
     "05. Commentary and Notes": """
 - setState(() => ...) rebuilds the widget when local data changes.
@@ -312,15 +312,15 @@ flutter_navigation: dict = {
     "01. Navigate Between Screens": """
 Push to a new route using Navigator.
 
-`dart
+```dart
 Navigator.pop(context); // Closes current drawer or screen
 Navigator.pushNamed(context, '/SecondPage'); // Navigates forward
-`
+```
 """,
     "02. DefaultTabController": """
 Creates swipeable tab-based navigation with shared layout.
 
-`dart
+```dart
 DefaultTabController(
   length: 3,
   child: Scaffold(
@@ -343,12 +343,12 @@ DefaultTabController(
     ),
   ),
 );
-`
+```
 """,
     "03. BottomNavigationBar (Simple)": """
 Provides persistent footer-based navigation.
 
-`dart
+```dart
 BottomNavigationBar(
   items: [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -356,12 +356,12 @@ BottomNavigationBar(
     BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
   ],
 );
-`
+```
 """,
     "04. Drawer Menu": """
 Side panel for contextual navigation.
 
-`dart
+```dart
 Drawer(
   child: Column(
     children: [
@@ -379,12 +379,12 @@ Drawer(
     ],
   ),
 );
-`
+```
 """,
     "05. SliverAppBar Scroll UI": """
 Dynamic header that expands, collapses, and floats with content.
 
-`dart
+```dart
 CustomScrollView(
   slivers: [
     SliverAppBar(
@@ -406,7 +406,7 @@ CustomScrollView(
     ),
   ],
 );
-`
+```
 """,
     "06. Commentary and Tips": """
 - Navigator.pushNamed() allows centralized route management.
@@ -426,28 +426,28 @@ flutter_effects: dict = {
     "01. Blur Effect": """
 Applies Gaussian blur to any widget.
 
-`dart
+```dart
 ImageFiltered(
   imageFilter: ImageFilter.blur(sigmaX: 12.0, sigmaY: 12.0),
   child: FlutterLogo(size: 100),
 );
-`
+```
 """,
     "02. Animated Opacity": """
 Fade in/out widgets smoothly.
 
-`dart
+```dart
 AnimatedOpacity(
   opacity: isVisible ? 1.0 : 0.0,
   duration: Duration(seconds: 1),
   child: Text('Fade Text', style: TextStyle(color: Colors.cyanAccent)),
 );
-`
+```
 """,
     "03. Clip Rounded Corners": """
 Renders a visually shaped child inside a rounded boundary.
 
-`dart
+```dart
 ClipRRect(
   borderRadius: BorderRadius.circular(32),
   child: Container(
@@ -455,28 +455,28 @@ ClipRRect(
     child: Text('Clipped Text', style: TextStyle(color: Colors.cyanAccent)),
   ),
 );
-`
+```
 """,
     "04. Transform Scale": """
 Scales content visually without changing layout.
 
-`dart
+```dart
 Transform.scale(
   scale: 1.0,
   child: Text('Scaled Text', style: TextStyle(color: Colors.cyanAccent)),
 );
-`
+```
 """,
     "05. Hero Animation (Cross-screen transition)": """
 Creates a shared widget transition across routes.
 
-`dart
+```dart
 Hero(
   tag: 'HeroID',
   child: FlutterLogo(size: 100),
 );
 `
-`dart
+```dart
 InkWell(
   onTap: () {
     Navigator.pop(context);
@@ -487,17 +487,17 @@ InkWell(
     child: Text('Tap to transition'),
   ),
 );
-`
+```
 """,
     "06. Tooltip": """
 Displays a hover or long-press hint.
 
-`dart
+```dart
 Tooltip(
   message: 'Tap to learn more',
   child: FlutterLogo(size: 100),
 );
-`
+```
 """,
     "07. Commentary and Tips": """
 - Combine AnimatedOpacity + GestureDetector for fade-interactive effects.
@@ -515,7 +515,7 @@ flutter_lists: dict = {
     "01. ListView (Simple)": """
 Horizontal or vertical list of widgets.
 
-`dart
+```dart
 ListView(
   scrollDirection: Axis.horizontal,
   children: [
@@ -523,12 +523,12 @@ ListView(
     Text('Item B'),
   ],
 );
-`
+```
 """,
     "02. ListView.builder": """
 Efficient builder pattern from iterable data.
 
-`dart
+```dart
 List<String> names = ['Javier', 'Dianelys', 'Christian'];
 
 ListView.builder(
@@ -537,12 +537,12 @@ ListView.builder(
     title: Text(names[index]),
   ),
 );
-`
+```
 """,
     "03. GridView.builder": """
 Creates a visual grid layout with reusable cell logic.
 
-`dart
+```dart
 List<String> names = ['Javier', 'Dianelys', 'Christian'];
 
 GridView.builder(
@@ -552,12 +552,12 @@ GridView.builder(
     title: Text(names[index]),
   ),
 );
-`
+```
 """,
     "04. DataTable": """
 Structured tabular layout. Ideal for admin, reports, or models.
 
-`dart
+```dart
 DataTable(
   columns: [
     DataColumn(label: Text('Name')),
@@ -574,12 +574,12 @@ DataTable(
     ])
   ],
 );
-`
+```
 """,
     "05. PageView (Scroll Pages)": """
 Scroll between full-screen widgets.
 
-`dart
+```dart
 PageView(
   scrollDirection: Axis.vertical,
   children: [
@@ -588,12 +588,12 @@ PageView(
     Container(color: Colors.blue[900], child: Text('Page 3')),
   ],
 );
-`
+```
 """,
     "06. PageView.builder": """
 Dynamic paging from iterable structure.
 
-`dart
+```dart
 PageView.builder(
   itemCount: 12,
   scrollDirection: Axis.vertical,
@@ -603,12 +603,12 @@ PageView.builder(
     child: Text('Page $index'),
   ),
 );
-`
+```
 """,
     "07. Responsive Scroll Composition": """
 Combines layout responsiveness with scroll logic.
 
-`dart
+```dart
 LayoutBuilder(
   builder: (context, constraints) {
     return SingleChildScrollView(
@@ -619,12 +619,12 @@ LayoutBuilder(
     );
   },
 );
-`
+```
 """,
     "08. DraggableScrollableSheet": """
 Creates overlay panel that can be dragged upward, great for search or filters.
 
-`dart
+```dart
 DraggableScrollableSheet(
   initialChildSize: 0.2,
   minChildSize: 0.2,
@@ -639,7 +639,7 @@ DraggableScrollableSheet(
     );
   },
 );
-`
+```
 """,
     "09. Commentary and Tips": """
 - Use ListView.builder for optimized performance with long lists.
@@ -657,7 +657,7 @@ flutter_inputs: dict = {
     "01. TextField (Input)": """
 A customizable text entry widget, suitable for login forms, search bars, and comments.
 
-`dart
+```dart
 TextField(
   obscureText: true,
   decoration: InputDecoration(
@@ -667,22 +667,22 @@ TextField(
     fillColor: Colors.grey.shade900,
   ),
 );
-`
+```
 """,
     "02. GestureDetector": """
 Captures touch and gesture events.
 
-`dart
+```dart
 GestureDetector(
   onTap: () => print('Gesture tapped'),
   child: Text('Touch me'),
 );
-`
+```
 """,
     "03. Dismissible (Swipe to Delete)": """
 Allows swipe-to-remove behavior in lists.
 
-`dart
+```dart
 Dismissible(
   key: Key('item'),
   onDismissed: (direction) {
@@ -691,24 +691,24 @@ Dismissible(
   background: Container(color: Colors.red),
   child: ListTile(title: Text('Swipe Me')),
 );
-`
+```
 """,
     "04. RadioListTile": """
 Displays a radio button with label.
 
-`dart
+```dart
 RadioListTile(
   title: Text('Option A'),
   value: 1,
   groupValue: selectedValue,
   onChanged: (v) => setState(() => selectedValue = v),
 );
-`
+```
 """,
     "05. Checkbox, Switch, and Slider": """
 Common toggles with reactive values.
 
-`dart
+```dart
 Checkbox(
   value: true,
   onChanged: (v) => print('Checkbox changed'),
@@ -725,7 +725,7 @@ Slider(
   min: 0,
   max: 100,
 );
-`
+```
 """,
     "06. Commentary and Tips": """
 - Combine GestureDetector + AnimatedOpacity for motion-reactive input.
@@ -742,7 +742,7 @@ flutter_api: dict = {
     "01. HttpClient Class (GET)": """
 Creates a reusable HTTP handler using Dart’s dart:io.
 
-`dart
+```dart
 import 'dart:io';
 import 'dart:convert';
 
@@ -756,12 +756,12 @@ class HttpModule {
     return await response.transform(utf8.decoder).join();
   }
 }
-`
+```
 """,
     "02. POST, PUT, DELETE Methods": """
 Implements other verbs with payload and headers.
 
-`dart
+```dart
 Future<String> post({required String url, required Map<String, dynamic> data}) async {
   final request = await _client.postUrl(Uri.parse(url));
   request.headers.contentType = ContentType.json;
@@ -769,12 +769,12 @@ Future<String> post({required String url, required Map<String, dynamic> data}) a
   final response = await request.close();
   return await response.transform(utf8.decoder).join();
 }
-`
+```
 """,
     "03. JsonConvert Class": """
 Convert between string and JSON objects.
 
-`dart
+```dart
 class HttpModuleJsonConvert {
   dynamic payload;
 
@@ -783,23 +783,23 @@ class HttpModuleJsonConvert {
   Map<String, dynamic> stringToJson() => jsonDecode(payload);
   String jsonToString() => jsonEncode(payload);
 }
-`
+```
 """,
     "04. Request Headers": """
 Add custom headers to simulate browser or token auth.
 
-`dart
+```dart
 final headers = {
   'User-Agent': 'Mozilla/5.0',
   'Authorization': 'Bearer my_token',
   'Accept': 'application/json',
 };
-`
+```
 """,
     "05. Usage Example (All Methods)": """
 Calls to API with chained .then() for quick execution.
 
-`dart
+```dart
 final api = HttpModule();
 
 api.get(url: 'https://jsonplaceholder.typicode.com/posts/1').then((msg) {
@@ -810,19 +810,19 @@ api.post(
   url: 'https://jsonplaceholder.typicode.com/posts',
   data: {'title': 'foo', 'body': 'bar', 'userId': 1},
 ).then((msg) => print('POST ✅ $msg'));
-`
+```
 """,
     "06. IMC Color/Text Switch": """
 Simple switch selector based on body metric.
 
-`dart
+```dart
 Color getColorByImc(double imc) => switch (imc) {
   < 18.5 => Colors.blue,
   < 28.5 => Colors.green,
   < 38.5 => Colors.orange,
   _ => Colors.red,
 };
-`
+```
 """,
     "07. Commentary and Tips": """
 - Use HttpClient for full control over headers and low-level behavior.
@@ -842,15 +842,15 @@ flutter_utilities: dict = {
     "01. SnackBar": """
 Displays lightweight feedback at the bottom of the screen.
 
-`dart
+```dart
 final snackBar = SnackBar(content: Text('Tap confirmed'));
 ScaffoldMessenger.of(context).showSnackBar(snackBar);
-`
+```
 """,
     "02. AlertDialog": """
 Creates a pop-up modal with title, content, and actions.
 
-`dart
+```dart
 showDialog(
   context: context,
   builder: (context) => AlertDialog(
@@ -864,12 +864,12 @@ showDialog(
     ],
   ),
 );
-`
+```
 """,
     "03. showAboutDialog": """
 Displays app metadata with icon and additional links.
 
-`dart
+```dart
 showAboutDialog(
   context: context,
   applicationName: 'App Name',
@@ -882,12 +882,12 @@ showAboutDialog(
     ),
   ],
 );
-`
+```
 """,
     "04. Stepper": """
 Visualizes a multi-step process (vertical or horizontal).
 
-`dart
+```dart
 Stepper(
   type: StepperType.vertical,
   currentStep: 2,
@@ -899,33 +899,33 @@ Stepper(
     Step(title: Text('Step 3'), content: Text('Enter your phone')),
   ],
 );
-`
+```
 """,
     "05. FloatingActionButton": """
 Creates a circular button floating above layout.
 
-`dart
+```dart
 FloatingActionButton(
   backgroundColor: Colors.grey[800],
   onPressed: () => print('FAB tapped'),
   child: Icon(Icons.add, color: Colors.white),
 );
-`
+```
 """,
     "06. AndroidView": """
 Embeds native Android view (web, camera, etc.).
 
-`dart
+```dart
 AndroidView(
   viewType: 'webview',
   creationParams: {'url': 'https://example.com'},
 );
-`
+```
 """,
     "07. ReorderableListView": """
 Allows drag-and-drop list rearrangement.
 
-`dart
+```dart
 ReorderableListView(
   onReorder: (oldIndex, newIndex) => print('Reordered'),
   children: [
@@ -933,7 +933,7 @@ ReorderableListView(
     Text('Item 2', key: ValueKey(2)),
   ],
 );
-`
+```
 """,
     "08. Commentary and Tips": """
 - Use SnackBar for non-intrusive feedback, ideal for mobile UX.
