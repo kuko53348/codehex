@@ -3,6 +3,7 @@ import flet as ft
 from data.main_model_codding_db import dict_object_seralization
 from model.ModelPageView import ModelPageView
 from model.ModelMainNavbarView import page_app_view
+from pages.lobby_page import LobbyPage
 from pages.page_one_menu import PageOneMenu
 from pages.main_menu import MainMenu
 from pages.markdown_page_view import MarkDownPageView
@@ -21,16 +22,16 @@ class flet_box_app:
         self.page.window.top = 3
         self.page.padding = 0
         self.page.spacing = 0
-        self.page.window.height = 720
-        self.page.window.width = 320
+        # self.page.window.height = 720
+        # self.page.window.width = 320
 
         self.page.on_route_change = lambda _: self.on_route_change(
             page=self.page,
             route="/",
         )
 
-        # self.page.go("/")
-        self.page.go("/home")
+        self.page.go("/")
+        # self.page.go("/home")
         # self.page.go("/index_layer_two")
 
     def on_route_change(self, page: object = None, route: str = str()) -> None:
@@ -43,10 +44,7 @@ class flet_box_app:
                 page_app_view(
                     page=self.page,
                     route=self.route,
-                    content=ft.ElevatedButton(
-                        text="next",
-                        on_click=lambda _: self.page.go("/home"),
-                    ),
+                    content=LobbyPage(page=self.page),
                     # content=ft.Text(value=dict_object_seralization()["cpp"].code),
                 )
             )

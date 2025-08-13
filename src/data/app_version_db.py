@@ -12,6 +12,16 @@ Whatsapp:  +53 54047170
 
 Soy Desarrollador de software especializado en la creación de aplicaciones innovadoras. Con un enfoque en la calidad y la experiencia del usuario, aprovecha las tecnologías modernas para ofrecer soluciones eficientes.
 """,
+    "CodexLobby": """
+🧠 CodeHex is more than an app:
+it’s an interactive programming‑language museum built with Flet (Python), capturing the visual, syntactic, and conceptual essence of multiple languages in 🧩 modular visual capsules.
+
+🎓 Designed for self‑taught learners
+🌍 Technical migrants
+🎨 Digital creatives
+
+who want to learn from an elegant, 📱 portable, and 🔧 adaptable interface.
+""",
 }
 
 
