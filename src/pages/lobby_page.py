@@ -20,6 +20,7 @@ class LobbyPage(ft.Container):
         self.content = ft.Container(
             blur=(8, 12),
             expand=False,
+            width=640,
             padding=ft.padding.only(left=24, right=24, bottom=24, top=24),
             margin=ft.margin.only(left=8, right=8, bottom=54, top=54),
             border_radius=ft.border_radius.only(
