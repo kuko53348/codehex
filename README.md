@@ -6,7 +6,7 @@ CodeHex is not just an app—it's a visual journey through the syntax, style, an
 
 🎥 Live Demo
 
-![Watch CodeHex in action](https://www.youtube.com/watch?v=0L6UOqMB-o)
+[![CodeHex demo app made with Flet and Flet-Box](https://img.youtube.com/vi/0L6UOqMB-_o/0.jpg)](https://youtu.be/0L6UOqMB-_o?si=ufi87l0K3_xT1u1j)
 
 Click the thumbnail to explore CodeHex’s visual capsules in motion—modular, elegant, and built for autodidacts and tech migrants.
 
