@@ -136,7 +136,7 @@ class nav_drawer_widget(ft.NavigationDrawer):
                         page=self.page,
                         icon="developer_mode_rounded",
                         text="GitHub Repository",
-                        text_link="https://github.com/kuko53348/Guantanamera.git",
+                        text_link="https://github.com/kuko53348/codehex.git",
                     ),
                     RichText(
                         page=self.page,

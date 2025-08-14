@@ -59,15 +59,20 @@ You’ll see CodeHex launch instantly in your browser.
 
 🌐 Languages Included
 
-| Language | Capsule Status |
-|----------|----------------|
+| Language | Capsule Status  |
+|----------|-----------------|
+| Java     | ✅ Complete     |
 | Python   | ✅ Complete     |
 | Dart     | ✅ Complete     |
 | Rust     | ✅ Complete     |
 | Go       | ✅ Complete     |
-| Kotlin   | 🛠️ In Progress |
-| Swift    | 🛠️ In Progress |
-| C++      | 🛠️ In Progress |
+| Kotlin   | ✅ Complete     |
+| Swift    | ✅ Complete     |
+| C++      | ✅ Complete     |
+| C#       | ✅ Complete     |
+| Flutter  | ✅ Complete     |
+| Zig      | 🛠️ In Progress  |
+| flet     | 🛠️ In Progress  |
 
 ---
 

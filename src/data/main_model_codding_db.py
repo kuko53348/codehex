@@ -8,6 +8,7 @@ from .programing_codding_db.kotlin_all import kotlin_code, kotlin_class, kotlin_
 from .programing_codding_db.python_all import python_code, python_class, python_os
 from .programing_codding_db.rust_all import rust_code, rust_class, rust_os
 from .programing_codding_db.swift_all import swift_code, swift_class, swift_os
+from .programing_codding_db.zig_all import zig_code, zig_class, zig_os
 
 from .framework_codding_db.flutter_all import (
     flutter_class,
@@ -33,6 +34,7 @@ kotlin = ModelDataView
 python = ModelDataView
 rust = ModelDataView
 swift = ModelDataView
+zig = ModelDataView
 
 
 # framework codding  list
@@ -50,6 +52,7 @@ def dict_object_seralization() -> dict:
         "python": python(code=python_code, class_oob=python_class, module_os=python_os),
         "rust": rust(code=rust_code, class_oob=rust_class, module_os=rust_os),
         "swift": swift(code=swift_code, class_oob=swift_class, module_os=swift_os),
+        "zig": zig(code=zig_code, class_oob=zig_class, module_os=zig_os),
         "flutter": flutter(
             flutter_class=flutter_class,
             flutter_async=flutter_async,

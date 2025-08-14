@@ -12,6 +12,7 @@ class LobbyPage(ft.Container):
             src="logo.png", fit=ft.ImageFit.COVER, opacity=0.08
         )  # NONE CONTAIN COVER FILL FIT_HEIGHT FIT_WIDTH SCALE_DOWN
         self.alignment = ft.alignment.center
+        self.padding = ft.padding.only(left=24, right=24, bottom=84, top=84)
         self.expand = True
         self.ink = True
         self.bgcolor = ft.Colors("black12")
@@ -20,9 +21,10 @@ class LobbyPage(ft.Container):
         self.content = ft.Container(
             blur=(8, 12),
             expand=False,
-            width=640,
+            # width=640,
+            # height=520,
             padding=ft.padding.only(left=24, right=24, bottom=24, top=24),
-            margin=ft.margin.only(left=8, right=8, bottom=54, top=54),
+            # margin=ft.margin.only(left=8, right=8, bottom=54, top=54),
             border_radius=ft.border_radius.only(
                 top_left=24, top_right=24, bottom_left=24, bottom_right=24
             ),
@@ -44,7 +46,7 @@ class LobbyPage(ft.Container):
             content=ft.Column(
                 # ft.MainAxisAlignment START END CENTER SPACE_BETWEEN SPACE_AROUND SPACE_EVENLY
                 # ft.CrossAxisAlignment START END CENTER STRETCH BASELINE
-                alignment=ft.MainAxisAlignment.CENTER,
+                alignment=ft.MainAxisAlignment.SPACE_AROUND,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 run_alignment=ft.CrossAxisAlignment.CENTER,
                 expand=False,

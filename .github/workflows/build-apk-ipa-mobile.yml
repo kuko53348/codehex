@@ -16,8 +16,8 @@ on:
 
 env:
   # https://flet.dev/docs/publish#versioning
-  BUILD_NUMBER: 2
-  BUILD_VERSION: 1.2.0
+  BUILD_NUMBER: 1
+  BUILD_VERSION: 1.1.0
 
   # Python version to use
   PYTHON_VERSION: 3.12.8
@@ -54,7 +54,7 @@ jobs:
 
     - name: Flet Build APK
       run: |
-        flet build apk --verbose --build-number=$BUILD_NUMBER --build-version=$BUILD_VERSION --project=Abogamos --product=CodeHex
+        flet build apk --verbose --build-number=$BUILD_NUMBER --build-version=$BUILD_VERSION --project=CodeHex --product=CodeHex
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4.3.4  # https://github.com/marketplace/actions/upload-a-build-artifact
