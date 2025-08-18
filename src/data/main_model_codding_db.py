@@ -44,15 +44,15 @@ flutter = FlutterModelView
 def dict_object_seralization() -> dict:
 
     return {
-        "cpp": cpp(code=cpp_code, class_oob=cpp_class, module_os=cpp_os),
-        "csharp": csharp(code=csharp_code, class_oob=csharp_class, module_os=csharp_os),
-        "dart": dart(code=dart_code, class_oob=dart_class, module_os=dart_os),
-        "java": java(code=java_code, class_oob=java_class, module_os=java_os),
-        "kotlin": kotlin(code=kotlin_code, class_oob=kotlin_class, module_os=kotlin_os),
-        "python": python(code=python_code, class_oob=python_class, module_os=python_os),
-        "rust": rust(code=rust_code, class_oob=rust_class, module_os=rust_os),
-        "swift": swift(code=swift_code, class_oob=swift_class, module_os=swift_os),
-        "zig": zig(code=zig_code, class_oob=zig_class, module_os=zig_os),
+        "cpp": cpp(code=cpp_code, class_obb=cpp_class, module_os=cpp_os),
+        "csharp": csharp(code=csharp_code, class_obb=csharp_class, module_os=csharp_os),
+        "dart": dart(code=dart_code, class_obb=dart_class, module_os=dart_os),
+        "java": java(code=java_code, class_obb=java_class, module_os=java_os),
+        "kotlin": kotlin(code=kotlin_code, class_obb=kotlin_class, module_os=kotlin_os),
+        "python": python(code=python_code, class_obb=python_class, module_os=python_os),
+        "rust": rust(code=rust_code, class_obb=rust_class, module_os=rust_os),
+        "swift": swift(code=swift_code, class_obb=swift_class, module_os=swift_os),
+        "zig": zig(code=zig_code, class_obb=zig_class, module_os=zig_os),
         "flutter": flutter(
             flutter_class=flutter_class,
             flutter_async=flutter_async,

@@ -14,7 +14,7 @@ class alert_dialog(ft.Container):
         self.border_radius = ft.border_radius.only(
             top_left=32, top_right=32, bottom_left=32, bottom_right=32
         )
-        self.width = 200
+        self.width = 180
 
         self.bgcolor = ft.Colors("red")
         self.content = ft.Text(value="Sussefully copied", weight="bold", size=13)
@@ -73,8 +73,8 @@ class code_editor(ft.Container):
         self.alert_visibility = alert_dialog(page=self.page)
 
         self.content = ft.Column(
-            alignment=ft.MainAxisAlignment.START,
-            horizontal_alignment=ft.VerticalAlignment.START,
+            alignment=ft.MainAxisAlignment.CENTER,
+            horizontal_alignment=ft.VerticalAlignment.CENTER,
             spacing=0,
             run_spacing=0,
             scroll="HIDDEN",

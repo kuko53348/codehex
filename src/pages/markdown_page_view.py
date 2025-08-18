@@ -33,8 +33,8 @@ class MarkDownPageView(ft.View):
             bgcolor=ft.Colors.GREY_900,
         )
         self.data = ft.View()
-        self.vertical_alignment = ft.MainAxisAlignment.START
-        self.horizontal_alignment = ft.CrossAxisAlignment.START
+        self.vertical_alignment = ft.MainAxisAlignment.CENTER
+        self.horizontal_alignment = ft.CrossAxisAlignment.CENTER
         # self.foreground_decoration = ft.BoxDecoration(
         #     image=ft.DecorationImage(
         #         src="card_shoppin_add.png", fit=ft.ImageFit.COVER, opacity=0.08

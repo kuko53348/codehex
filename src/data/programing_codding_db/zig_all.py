@@ -1,32 +1,117 @@
 zig_code: dict = {
+    "Vars Assigments": """
+🔢 Enteros sin signo (uN)
+
+| Tipo  | Bits | Rango de valores          |
+|-------|------|---------------------------|
+| u8  | 8    | 0 a 255                     |
+| u16 | 16   | 0 a 65 k                    |
+| u32 | 32   | 0 a 4,2 KM                  |
+| u64 | 64   | 0 a (enorme)                |
+| u128| 128  | 0 a 2¹²⁸−1 (enorme)         |
+
+➖ Enteros con signo (iN)
+
+| Tipo  | Bits | Rango de valores          |
+|-------|------|---------------------------|
+| i8  | 8    | −128 a 127                  |
+| i16 | 16   | −32 k a 32 k                |
+| i32 | 32   | −2,1 KM a 2,1 KM            |
+| i64 | 64   | −(enorme) a (enorme)        |
+| i128| 128  | −2¹²⁷ a 2¹²⁷−1              |
+
+🌊 Tipos flotantes (fN)
+
+| Tipo  | Bits | Precisión aproximada        |
+|-------|------|-----------------------------|
+| f16 | 16   | ±65,504 (menos común)       |
+| f32 | 32   | ±3.4 × 10³⁸                 |
+| f64 | 64   | ±1.8 × 10³⁰⁸                |
+| f128| 128  | ±1.2 × 10⁴⁹³² (experimental) |
+    """,
+    "00. Key Words": """
+```rust
+// zig is list of strings
+const example:[_]const u8 = "hello world 12345";
+
+// make shortcut
+const print = std.debug.print;
+print("Number: {}\\n", .{num});
+
+const lowerString = std.ascii.lowerString
+const upperString = std.ascii.upperString
+
+const split = std.mem.split
+const startsWith = std.mem.startsWith
+const endsWith = std.mem.endsWith
+const indexOf = std.mem.indexOf
+const lastIndexOf = std.mem.lastIndexOf
+const trim = std.mem.trim
+const replace = std.mem.replace
+const concat = std.mem.concat
+const join = std.mem.join
+
+// How use?
+const isEmpty = example.len == 0;
+const isNotEmpty = example.len != 0;
+const substring = example[0..5];
+
+const lower = lowerString(example);
+const upper = upperString(example);
+
+const words = split(u8, example, " ");
+const startsWithH = startsWith(u8, example, "h");
+const endsWith5 = endsWith(u8, example, "5");
+const containsH = indexOf(u8, example, "h") != null;
+const indexH = indexOf(u8, example, "h");
+const lastIndexH = lastIndexOf(u8, example, "h");
+const trimmed = trim(u8, "  hello  ", " ");
+const replaced = replace(u8, example, "h", "H");
+const paddedRight = concat(u8, &[_][]const u8{ example, "000" });
+const paddedLeft = std.mem.concat(u8, &[_][]const u8{ "000", example });
+const joined = std.mem.join(u8, "-", words);
+```
+    """,
     "01. Variables and Assignments": """
 ```rust
+// Strings int floats
 const name: []const u8 = "David";     // Cadena de texto
+
+const age: u32 = 10;                  // Positive
+const age: i32 = -10;                 // Positive and negative Unsigned + -
+const age: i32 = 10;                  // Positive and negative Unsigned + -
+const range: f32 = 10.00;             // real Positive and negative Decimal + -
+
 const state: bool = true;             // Booleano
 
-const age: i32 = 10;                  // Entero
-const temp: f64 = 18.5;               // Decimal
+// Dhynamyc and undefine
+const var varName: i32 = undefine;    // Sin declarar
+const var dynamyc: anytype = undefine;// Sin declarar
 const intNumber: anytype = 24;        // Puede ser int o float (usamos anytype para flexibilidad)
 
-// Listas y mapas simulados
-const mixedList = [_]anytype{ 1, "Juan", 23, "Juan" };
+// Tipado dinámico no existe en Zig, pero se puede usar union o anytype
+var dynamicVar: anytype = 1.2;
+dynamicVar = true;
+
+var lateAssignation: []const u8 = undefined;
+lateAssignation = "assigned value";
+
+// Constantes
+const pi = 3.14;
+const now = std.time.timestamp(); // Tiempo actual
+
+// Strings Listas y mapas simulados
+const listNumbers = [3]u8{ 24, 48, 75 };
+const strings =     [_]u8 = "Juan ,  Manuel";
+const listStrings = [_]u8{ "Juan", "Manuel" };
+const mixedList =   [_]anytype{ 1, "Juan", 23, "Juan" };
+
 const numberSet = std.AutoHashMap(i32, void).init(std.heap.page_allocator); // Set simulado
 
 const person = .{
     .Name = "Carlos",
     .Age = 23,
 };
-
-// Tipado dinámico no existe en Zig, pero se puede usar union o anytype
-var dynamicVar: anytype = 1.2;
-dynamicVar = true;
-
-// Constantes
-const pi = 3.14;
-const now = std.time.timestamp(); // Tiempo actual
-
-var lateAssignation: []const u8 = undefined;
-lateAssignation = "assigned value";
 ```
 """,
     "0.1.1 Int Manipulation": """
@@ -42,7 +127,7 @@ const isEven = age % 2 == 0;
     "02. String Manipulation": """
 
 ```rust
-const example = "hello world 12345";
+const example:[_]const u8 = "hello world 12345";
 const words = std.mem.split(u8, example, " ");
 
 const len = example.len;
@@ -104,7 +189,19 @@ try person.put("Age", 23);
 ```rust
 const doubled = [_]i32{ 0, 2, 4, 6, 8 };
 for (doubled) |num| {
-    std.debug.print("Number: {}\n", .{num});
+    std.debug.print("Number: {}\\n", .{num});
+}
+
+for (doubled) |num, index| {
+    std.debug.print("Num: {} index: {}\\n",.{num}, .{index});
+}
+
+for (doubled) |_num, index| {
+    std.debug.print("index: {}\\n", .{index});
+}
+
+for (doubled) |num, 0..| {
+    std.debug.print("Number: {}\\n", .{num});
 }
 
 fn greet(isMorning: bool) []const u8 {
@@ -112,12 +209,11 @@ fn greet(isMorning: bool) []const u8 {
 }
 
 const buttonPressed = true;
-if (buttonPressed) std.debug.print("Clicked Bro\n", .{});
+if (buttonPressed) std.debug.print("Clicked Bro\\n", .{});
 
 // Nullability en Zig se maneja con optional
 var nullableVar: ?[]const u8 = null;
 var notNullableVar: []const u8 = "value";
-var acceptNullVar: ?[]const u8 = null;
 
 const result = nullableVar orelse notNullableVar;
 
@@ -128,7 +224,6 @@ isTrue = !isTrue;
 ---
 """,
     "05. Parsing and Type Conversion": """
-
 
 ```rust
 const parsedInt = std.fmt.parseInt(i32, "12", 10);
@@ -157,19 +252,19 @@ const condition2 = 5;
 const result = if (isTrue) "True case" else "False case";
 
 if (condition1 == 10) {
-    std.debug.print("Condition1 is true\n", .{});
+    std.debug.print("Condition1 is true\\n", .{});
 } else if (condition2 == 5) {
-    std.debug.print("Condition2 is true\n", .{});
+    std.debug.print("Condition2 is true\\n", .{});
 } else {
-    std.debug.print("All conditions false\n", .{});
+    std.debug.print("All conditions false\\n", .{});
 }
 
 const value = "case2";
 switch (value) {
-    "case1" => std.debug.print("Case 1 executed\n", .{}),
-    "case2" => std.debug.print("Case 2 executed\n", .{}),
-    "case3" => std.debug.print("Case 3 executed\n", .{}),
-    else => std.debug.print("Default case executed\n", .{}),
+    "case1" => std.debug.print("Case 1 executed\\n", .{}),
+    "case2" => std.debug.print("Case 2 executed\\n", .{}),
+    "case3" => std.debug.print("Case 3 executed\\n", .{}),
+    else => std.debug.print("Default case executed\\n", .{}),
 }
 ```
 
@@ -179,13 +274,13 @@ switch (value) {
 ```rust
 for (std.math.min(5, 10)) |i| {
     if (i == 3) continue;
-    std.debug.print("For loop: {}\n", .{i});
+    std.debug.print("For loop: {}\\n", .{i});
     if (i == 4) break;
 }
 
 const names = [_][]const u8{ "Maria", "Joaquin", "Luisa" };
 for (names) |name| {
-    std.debug.print("Hello {}\n", .{name});
+    std.debug.print("Hello {}\\n", .{name});
 }
 
 const ages = [_]struct { name: []const u8, age: i32 }{
@@ -194,17 +289,17 @@ const ages = [_]struct { name: []const u8, age: i32 }{
     .{ .name = "Luisa", .age = 22 },
 };
 for (ages) |entry| {
-    std.debug.print("{} is {} years old\n", .{entry.name, entry.age});
+    std.debug.print("{} is {} years old\\n", .{entry.name, entry.age});
 }
 
 var count: i32 = 0;
 while (count < 3) : (count += 1) {
-    std.debug.print("While loop: {}\n", .{count});
+    std.debug.print("While loop: {}\\n", .{count});
 }
 
 count = 3;
 while (count > 0) : (count -= 1) {
-    std.debug.print("Do-while loop: {}\n", .{count});
+    std.debug.print("Do-while loop: {}\\n", .{count});
 }
 ```
 
@@ -214,7 +309,7 @@ while (count > 0) : (count -= 1) {
 
 ```rust
 fn callFunction(parameter: []const u8) void {
-    std.debug.print("hello {}\n", .{parameter});
+    std.debug.print("hello {}\\n", .{parameter});
 }
 
 fn callStringFunction(parameter: []const u8) []const u8 {
@@ -242,12 +337,12 @@ const totalSum = add(2, add(2, 3));
     "09. Error Handling": """
 ```rust
 const result = std.fmt.parseInt(i32, "123", 10) catch |err| {
-    std.debug.print("Error: {}\n", .{err});
+    std.debug.print("Error: {}\\n", .{err});
     return;
 };
 
 const division = result / 0;
-std.debug.print("Result: {}\n", .{division});
+std.debug.print("Result: {}\\n", .{division});
 ```
 
 ---
@@ -270,7 +365,7 @@ pub fn main() void {
         .age = 30,
     };
 
-    stdout.print("Name: {}, Age: {}\n", .{pedro.name, pedro.age});
+    stdout.print("Name: {}, Age: {}\\n", .{pedro.name, pedro.age});
 
     // Enum usage
     const Direction = enum {
@@ -282,26 +377,26 @@ pub fn main() void {
 
     const dir = Direction.North;
     switch (dir) {
-        Direction.North => stdout.print("Going North\n", .{}),
-        Direction.South => stdout.print("Going South\n", .{}),
-        Direction.East => stdout.print("Going East\n", .{}),
-        Direction.West => stdout.print("Going West\n", .{}),
+        Direction.North => stdout.print("Going North\\n", .{}),
+        Direction.South => stdout.print("Going South\\n", .{}),
+        Direction.East => stdout.print("Going East\\n", .{}),
+        Direction.West => stdout.print("Going West\\n", .{}),
     }
 
     // Pointers and memory
     var number: i32 = 42;
     const ptr = &number;
 
-    stdout.print("Value: {}, Pointer: {*}\n", .{number, ptr});
+    stdout.print("Value: {}, Pointer: {*}\\n", .{number, ptr});
     ptr.* += 1;
-    stdout.print("Updated Value: {}\n", .{number});
+    stdout.print("Updated Value: {}\\n", .{number});
 
     // Optional pointer
     var maybePtr: ?*i32 = null;
     if (maybePtr) |val| {
-        stdout.print("Pointer value: {}\n", .{val.*});
+        stdout.print("Pointer value: {}\\n", .{val.*});
     } else {
-        stdout.print("Pointer is null\n", .{});
+        stdout.print("Pointer is null\\n", .{});
     }
 
     // Allocating memory manually
@@ -313,7 +408,7 @@ pub fn main() void {
         b.* = @intCast(u8, i);
     }
 
-    stdout.print("Buffer: {}\n", .{buffer});
+    stdout.print("Buffer: {}\\n", .{buffer});
 }
 ```
 
@@ -342,7 +437,7 @@ const Vehiculo = struct {
     anho: i32,
 
     pub fn mostrarInfo(self: Vehiculo) void {
-        std.debug.print("Marca: {}, Año: {}\n", .{self.marca, self.anho});
+        std.debug.print("Marca: {}, Año: {}\\n", .{self.marca, self.anho});
     }
 };
 
@@ -365,7 +460,7 @@ const Usuario = struct {
     nombre: []const u8,
 
     pub fn saludar(self: Usuario) void {
-        std.debug.print("¡Hola, {}! (ID: {})\n", .{self.nombre, self.id});
+        std.debug.print("¡Hola, {}! (ID: {})\\n", .{self.nombre, self.id});
     }
 };
 
@@ -393,7 +488,7 @@ const Punto = struct {
 };
 
 const p = Punto.init(2, 3);
-std.debug.print("({}, {})\n", .{p.x, p.y});
+std.debug.print("({}, {})\\n", .{p.x, p.y});
 ```
 
 03.2 Named Constructors
@@ -444,13 +539,13 @@ Zig doesn’t support inheritance. Use composition and interfaces via `struct` a
 ```rust
 const Animal = struct {
     pub fn moverse() void {
-        std.debug.print("El animal se mueve\n", .{});
+        std.debug.print("El animal se mueve\\n", .{});
     }
 };
 
 const Perro = struct {
     pub fn moverse() void {
-        std.debug.print("El perro corre\n", .{});
+        std.debug.print("El perro corre\\n", .{});
     }
 };
 
@@ -489,7 +584,7 @@ Zig doesn’t have mixins, but you can simulate them with reusable functions or 
 ```rust
 const Musical = struct {
     pub fn tocarInstrumento() void {
-        std.debug.print("Tocando instrumento\n", .{});
+        std.debug.print("Tocando instrumento\\n", .{});
     }
 };
 
@@ -521,7 +616,7 @@ const Impostor = struct {
 };
 
 const impostor = Impostor{};
-std.debug.print("{}\n", .{impostor.saludar()});
+std.debug.print("{}\\n", .{impostor.saludar()});
 ```
 
 ---
@@ -536,7 +631,7 @@ const Vehiculo = struct {
 
 const Bicicleta = struct {
     pub fn mover() void {
-        std.debug.print("La bicicleta avanza\n", .{});
+        std.debug.print("La bicicleta avanza\\n", .{});
     }
 };
 
@@ -563,7 +658,7 @@ const Banco = struct {
 
 var banco = Banco{ .saldo = 0 };
 banco.depositar(100);
-std.debug.print("Saldo: {}\n", .{banco.getSaldo()});
+std.debug.print("Saldo: {}\\n", .{banco.getSaldo()});
 ```
 
 ---
@@ -579,8 +674,8 @@ const Utilidades = struct {
     }
 };
 
-std.debug.print("{}\n", .{Utilidades.pi});
-std.debug.print("{}\n", .{Utilidades.cuadrado(5)});
+std.debug.print("{}\\n", .{Utilidades.pi});
+std.debug.print("{}\\n", .{Utilidades.cuadrado(5)});
 ```
 
 ---
@@ -595,7 +690,7 @@ fn Caja(comptime T: type) type {
         contenido: T,
 
         pub fn mostrar(self: @This()) void {
-            std.debug.print("{}\n", .{self.contenido});
+            std.debug.print("{}\\n", .{self.contenido});
         }
     };
 }
@@ -615,7 +710,7 @@ Zig doesn’t use annotations like Dart, but you can use attributes and comments
 ```rust
 /// Deprecated: use nuevoMetodo instead
 pub fn metodoAntiguo() void {
-    std.debug.print("Método antiguo\n", .{});
+    std.debug.print("Método antiguo\\n", .{});
 }
 ```
 
@@ -680,7 +775,7 @@ pub fn fileOps() !void {
     const file = try cwd.openFile("text.txt", .{});
     defer file.close();
     const content = try file.readToEndAlloc(std.heap.page_allocator, 1024);
-    std.debug.print("Content: {}\n", .{content});
+    std.debug.print("Content: {}\\n", .{content});
 
     // ✍️ Write to file
     try cwd.writeFile("new.txt", "Hello world");
@@ -690,7 +785,7 @@ pub fn fileOps() !void {
         error.FileNotFound => false,
         else => return err,
     };
-    std.debug.print("Exists: {}\n", .{exists});
+    std.debug.print("Exists: {}\\n", .{exists});
 
     // 🧹 Delete file
     try cwd.deleteFile("new.txt");
@@ -701,7 +796,7 @@ pub fn fileOps() !void {
     // 🗂️ List directory contents
     var it = try dir.openDir(".", .{ .iterate = true }).iterator();
     while (try it.next()) |entry| {
-        std.debug.print("Found: {}\n", .{entry.name});
+        std.debug.print("Found: {}\\n", .{entry.name});
     }
 }
 ```
@@ -735,7 +830,7 @@ pub fn pathOps() void {
     // 🔗 Join paths
     const joined = path.join("folder", "file.txt");
 
-    std.debug.print("Name: {}, Ext: {}, Joined: {}\n", .{name, ext, joined});
+    std.debug.print("Name: {}, Ext: {}, Joined: {}\\n", .{name, ext, joined});
 }
 ```
 
@@ -760,7 +855,7 @@ pub fn timeOps() void {
     const diff = now - parsed.secs;
 
     // 🧾 Simple format
-    std.debug.print("Now: {}, Diff: {}\n", .{now, diff});
+    std.debug.print("Now: {}, Diff: {}\\n", .{now, diff});
 }
 ```
 
@@ -780,7 +875,7 @@ pub fn runCommand() !void {
     });
 
     // 📡 Print output
-    std.debug.print("Output: {}\n", .{result.stdout});
+    std.debug.print("Output: {}\\n", .{result.stdout});
 }
 ```
 
@@ -796,7 +891,7 @@ pub fn envVars() void {
     // 🏡 HOME directory (Unix)
     const home = std.os.getenv("HOME") orelse "Unknown";
 
-    std.debug.print("HOME: {}\n", .{home});
+    std.debug.print("HOME: {}\\n", .{home});
 }
 ```
 
@@ -815,7 +910,7 @@ pub fn osDetect() void {
     // 🍎 macOS
     const isMac = std.os.tag == .macos;
 
-    std.debug.print("Windows: {}, Linux: {}, macOS: {}\n", .{isWindows, isLinux, isMac});
+    std.debug.print("Windows: {}, Linux: {}, macOS: {}\\n", .{isWindows, isLinux, isMac});
 }
 ```
 
@@ -831,7 +926,7 @@ pub fn streamPing() !void {
         .max_output_bytes = 4096,
     });
 
-    std.debug.print("📡 {}\n", .{process.stdout});
+    std.debug.print("📡 {}\\n", .{process.stdout});
 }
 ```
 

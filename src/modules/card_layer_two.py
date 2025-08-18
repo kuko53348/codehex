@@ -46,7 +46,7 @@ class CardLayerTwo(ft.Container):
                 controls=[
                     # Banner Title
                     ft.Text(
-                        value=self.header,
+                        value=f"Syntax {self.header}".replace("_", " "),
                         size=14,
                         weight="bold",
                         color=ft.Colors("white"),
