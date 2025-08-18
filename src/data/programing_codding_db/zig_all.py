@@ -22,12 +22,12 @@ zig_code: dict = {
 
 🌊 Tipos flotantes (fN)
 
-| Tipo  | Bits | Precisión aproximada        |
-|-------|------|-----------------------------|
+| Tipo  | Bits | Precisión aproximada      |
+|-------|------|---------------------------|
 | f16 | 16   | ±65,504 (menos común)       |
 | f32 | 32   | ±3.4 × 10³⁸                 |
 | f64 | 64   | ±1.8 × 10³⁰⁸                |
-| f128| 128  | ±1.2 × 10⁴⁹³² (experimental) |
+| f128| 128  | ±1.2 × 10⁴⁹³² (experimental)|
     """,
     "00. Key Words": """
 ```rust
@@ -77,6 +77,7 @@ const joined = std.mem.join(u8, "-", words);
 // Strings int floats
 const name: []const u8 = "David";     // Cadena de texto
 
+const age: @as(u32 ,10);              // Positive
 const age: u32 = 10;                  // Positive
 const age: i32 = -10;                 // Positive and negative Unsigned + -
 const age: i32 = 10;                  // Positive and negative Unsigned + -
@@ -196,11 +197,12 @@ for (doubled) |num, index| {
     std.debug.print("Num: {} index: {}\\n",.{num}, .{index});
 }
 
-for (doubled) |_num, index| {
+for (doubled, 0..) |_num, index| {
     std.debug.print("index: {}\\n", .{index});
 }
 
-for (doubled) |num, 0..| {
+for (doubled, 1..) |num, index| {
+    // puede tener al index que desees
     std.debug.print("Number: {}\\n", .{num});
 }
 
@@ -243,7 +245,6 @@ const joinedFruits = std.mem.join(u8, ",", listFromString);
 ---
 """,
     "06. Conditionals": """
-
 
 ```rust
 const condition1 = 10;
@@ -325,6 +326,7 @@ fn callDynamicFunction(parameter: []const u8) struct { a: i32, b: []const u8 } {
 }
 
 fn add(a: i32, b: i32) i32 {
+    defer std.debug.print("Solo se ejecuta terminado la funcion {}\\n", .{a});
     return a + b;
 }
 
@@ -413,6 +415,21 @@ pub fn main() void {
 ```
 
 ---
+""",
+    "11. Pointers": """
+```rust
+
+// First exemple
+var x: *u8 =0; // Create pinter
+var y: u8=&x;  // refer pointer
+
+// Second exemple
+var x: u8 =0;
+var ptr: *u8=&x; // Create pinter and refer pointer
+
+std.debug.print("Pointer: {d}\\n", .{ptr});
+
+```
 """,
 }
 
