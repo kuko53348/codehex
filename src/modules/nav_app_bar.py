@@ -100,7 +100,8 @@ class nav_drawer_widget(ft.NavigationDrawer):
             content=ft.Column(
                 scroll="HIDDEN",
                 alignment=ft.MainAxisAlignment.SPACE_AROUND,
-                horizontal_alignment=ft.CrossAxisAlignment.START,
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                width=340,
                 controls=[
                     (
                         ft.Container()
